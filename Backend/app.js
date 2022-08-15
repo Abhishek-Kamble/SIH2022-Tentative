@@ -1,7 +1,8 @@
 const Express = require('./ServiceHost').Express;
 var expressApp = require('./ServiceHost').expressApp;
-
 const cors = require('cors');
+
+expressApp.use(cors({origin:'*'}));
 
 expressApp.get('/', (req, res) => {
     res.status(200).send("Hello World");
@@ -9,12 +10,11 @@ expressApp.get('/', (req, res) => {
 })
 
 // Import Routes  
-// var  AddClassRoom = require('./Routes/AddClassRoom');
+var  StaffRegistor = require('./routes/Admin/StaffRegistor');
 
 
-expressApp.use(cors({origin:'*'}));
 
-// expressApp.use('/api/classrooms',AddClassRoom);
+expressApp.use('/staffregistor',StaffRegistor);
 
 
 expressApp.listen(8000,function(){
