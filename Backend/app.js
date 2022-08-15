@@ -1,5 +1,6 @@
 const Express = require('./ServiceHost').Express;
 var expressApp = require('./ServiceHost').expressApp;
+
 const cors = require('cors');
 
 expressApp.use(cors({origin:'*'}));
@@ -10,11 +11,17 @@ expressApp.get('/', (req, res) => {
 })
 
 // Import Routes  
-var  StaffRegistor = require('./routes/Admin/StaffRegistor');
+var  StaffRegistor = require('./routes/Admin/staffRegistor/controller');
+var Verification = require('./routes/verification/controller')
+var Login = require('./routes/Login/controller')
 
 
+expressApp.use('/login',Login);
+
+// Middleware API
 
 expressApp.use('/staffregistor',StaffRegistor);
+expressApp.use('/verification',Verification);
 
 
 expressApp.listen(8000,function(){

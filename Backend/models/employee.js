@@ -21,16 +21,18 @@ const employees = sequelize.define(
         mobile_number:{
             type: Sequelize.DataTypes.INTEGER(10),
             allowNull: false,
+            unique: true,
         },
         email:{ 
             type: Sequelize.DataTypes.STRING(50),
             allowNull: false,
+            unique: true,
         },
         password:{
             type: Sequelize.DataTypes.STRING(80),
             allowNull: false,
         },
-        isVerifed:{
+        isVerified:{
             type: Sequelize.DataTypes.BOOLEAN,
             allowNull:false,
             defaultValue: false

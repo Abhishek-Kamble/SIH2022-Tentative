@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "sih2022.cowj1posk4wv.ap-south-1.rds.amazonaws.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "sih2022",
+            "database": "sih2022",
+            "username": "sih2022",
+            "password": "Sih#2022"
+        }
+    ]
+}

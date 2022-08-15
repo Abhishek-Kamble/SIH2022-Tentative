@@ -5,6 +5,8 @@
 /node_modules
 *db.config.js
 *.env
+*test.json
+*sih2022.session.sql
 /.pnp
 .pnp.js
 .cache/
