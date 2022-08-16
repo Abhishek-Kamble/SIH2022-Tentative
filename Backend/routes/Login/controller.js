@@ -4,13 +4,14 @@ const business = require('./business');
 
 router.post('/', async (req, res, next) => {
   try {
-    await business.verification(req).then((data) => {
+    await business.login(req).then((data) => {
       res.send(data);
     }).catch((err) => {
       res.send(err.message);
     })
 
   } catch (err) {
+    console.log(err);
     res.status(400).send(err);
   }
 })
