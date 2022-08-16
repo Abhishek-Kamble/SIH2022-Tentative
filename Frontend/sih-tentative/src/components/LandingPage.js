@@ -1,4 +1,5 @@
-const LandingPage =()=> {
+import {withRouter} from 'react-router-dom';
+const LandingPage = ()=> {
 
         return (
             <div>
@@ -8,4 +9,4 @@ const LandingPage =()=> {
     
 }
 
-export default LandingPage;
+export default withRouter(LandingPage);

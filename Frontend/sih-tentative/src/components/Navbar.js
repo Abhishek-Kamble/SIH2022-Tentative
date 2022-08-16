@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../CSS/Navbar.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
@@ -23,16 +23,16 @@ const Navbar = () => {
           }>
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <NavLink to="/about">about</NavLink>
+              <Link to="/about">about</Link>
             </li>
             <li>
-              <NavLink to="/service">services</NavLink>
+              <Link to="/Register">Register</Link>
             </li>
             <li>
-              <NavLink to="/contact">contact</NavLink>
+              <Link to="/contact">contact</Link>
             </li>
           </ul>
         </div>

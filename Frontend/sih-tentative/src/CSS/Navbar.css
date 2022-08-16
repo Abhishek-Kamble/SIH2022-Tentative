@@ -28,8 +28,6 @@ li {
   width: 100%;
   display: grid;
   grid-template-columns: 10rem 1fr 2fr 1fr 10rem;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     background-color: #2218A7;
 }
 
@@ -97,17 +95,6 @@ li {
   display: none;
 }
 
-.facebook {
-  color: #3b5998;
-}
-
-.instagram {
-  color: #c32aa3;
-}
-
-.youtube {
-  color: #ff0000;
-}
 
 /* hero section   */
 
@@ -184,7 +171,7 @@ li {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
   }
 
   .mobile-menu-link ul li:first-child {
