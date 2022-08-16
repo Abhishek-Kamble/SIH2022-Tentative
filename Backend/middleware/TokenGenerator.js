@@ -8,7 +8,7 @@ const GenerateJWTToken = async function(tokenData) {
             var token = jwt.sign(
                 tokenData,
                 process.env.secretAccessKey,
-                { expiresIn: '300m' },
+                { expiresIn: process.env.jwt_expiry_days },
             );
 
             console.log("JWT Token: " + token);
