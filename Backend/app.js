@@ -10,8 +10,10 @@ expressApp.get('/', (req, res) => {
 
 })
 
+// Middleware API
+var AuthorizationRoute = require('./middleware/AuthorizationController')
 // Import Routes  
-var  StaffRegistor = require('./routes/Admin/staffRegistor/controller');
+var StaffRegistor = require('./routes/Admin/staffRegistor/controller');
 var Verification = require('./routes/verification/controller')
 var Login = require('./routes/Login/controller')
 
@@ -20,7 +22,7 @@ expressApp.use('/login',Login);
 
 // Middleware API
 
-expressApp.use('/staffregistor',StaffRegistor);
+expressApp.use('/staffregistor',AuthorizationRoute.validateToken,StaffRegistor);
 expressApp.use('/verification',Verification);
 
 

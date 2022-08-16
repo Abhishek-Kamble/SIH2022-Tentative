@@ -1,6 +1,4 @@
 const AWS = require("aws-sdk");
-const config = require('config');
-require('dotenv').config();
 
 exports.emailViaAWS_SES = async function (req) {
     return await new Promise(async (resolve, reject) => {
