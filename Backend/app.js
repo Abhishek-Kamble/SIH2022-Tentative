@@ -11,7 +11,7 @@ expressApp.get('/', (req, res) => {
 })
 
 // Import Routes  
-var  StaffRegistor = require('./routes/Admin/staffRegistor/controller');
+var StaffRegistor = require('./routes/Admin/staffRegistor/controller');
 var Verification = require('./routes/verification/controller')
 var Login = require('./routes/Login/controller')
 
