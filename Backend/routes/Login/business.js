@@ -31,7 +31,7 @@ module.exports.login = async function (req) {
         }
         // TODO: Implemnt Bcrypt
         if(GetTERes[0].password == req.body.password) {
-            var Token = await GenerateJWTToken({userid:req.body.email,password:req.body.password});
+            var Token = await GenerateJWTToken({userid:req.body.email,role:GetTERes[0].role,id:GetTERes[0].employee_id});
 
             resolve({found: 1, message:"Succefully Logged in!",token: Token});
         } else {
