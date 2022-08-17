@@ -1,3 +1,7 @@
+const employee=require('../../models/employee');
+const Sequelize = require('sequelize');
+const employees = require('../../models/employee');
+const sequelize = require('../serviceHost').sequelize
 function generatePassword() {
     var length = 8,
         charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
@@ -53,6 +57,25 @@ var ValidateDatabase = async function(req) {
             if(!isEmailValid(mailID))
             {
                 throw "email is invaid";
+            }
+            //TODO => to check mail id is present in user table 
+            if(isEmailValid(mailID))
+            {
+                employees.findAll({
+                    where:{
+                        email:mailID
+                    }
+                }).then(result=>{
+                   
+                    if(result.length>0)
+                   {
+                        console.log("email already present in database");
+                        throw "email already present in database";
+                   } 
+                 
+                }).catch(err=>{
+                    console.log(err);
+                })
             }
 
             //check mobile number
