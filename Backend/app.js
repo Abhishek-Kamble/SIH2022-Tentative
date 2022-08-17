@@ -18,10 +18,12 @@ var Verification = require('./routes/verification/controller')
 var Login = require('./routes/Login/controller')
 var StaffDelete = require('./routes/Admin/RemoveStaff/controller')
 var StaffData = require('./routes/Admin/GetStaff/controller');
+var UserRegister = require('./routes/User/Register/controller');
+// Routes
 expressApp.use('/login',Login);
 
 // Middleware API
-
+expressApp.use('/UserRegister',UserRegister);
 expressApp.use('/staffregistor',AuthorizationRoute.validateToken,StaffRegistor);
 expressApp.use('/verification',Verification);
 expressApp.use('/staffd',AuthorizationRoute.validateToken,StaffDelete)
