@@ -8,7 +8,7 @@ router.get('/', async (req, res, next)=>{
         res.status(400).send(err);
     }
 })
-
+// TODO: Add req.body.role = 2 and isVerified = 0
 /*
 staff Model =>
 
