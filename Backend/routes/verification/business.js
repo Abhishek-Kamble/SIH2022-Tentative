@@ -12,6 +12,7 @@ module.exports.verification = async function (req) {
       const uid = req.query.uid;
 
       const transaction = await sequelize.transaction();
+      
       console.log(id, uid)
       var TE;
       if (id == 2) {

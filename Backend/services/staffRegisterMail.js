@@ -1,5 +1,4 @@
 const emailService = require('./email')
-const AWS = require("aws-sdk");
 module.exports.staffRegistrationEmail = async function (req) {
   return await new Promise( async (resolve, reject) => {
     try {
