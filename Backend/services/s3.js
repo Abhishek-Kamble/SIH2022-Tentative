@@ -11,7 +11,7 @@ const BUCKET = process.env.s3privateBucket;
 const s3 = new aws.S3();
 
 const downloadObject = async function (objectData) {
-  return await new Promise((resolve, reject) => {
+  return await new Promise( async (resolve, reject) => {
     try {
       const url = await s3.getSignedUrlPromise('getObject', {
         Bucket: BUCKET,
@@ -29,7 +29,7 @@ const downloadObject = async function (objectData) {
 
 //upload objects to private s3 bucket
 const uploadObject = async function (objectData) {
-  return await new Promise((resolve, reject) => {
+  return await new Promise(async (resolve, reject) => {
     try {
       await s3.putObject({
         Body: objectData.body,
@@ -42,7 +42,7 @@ const uploadObject = async function (objectData) {
           resolve({ done: 0, message: "Error while uploading to S3 bucket." })
         }
         else console.log(data);
-        resolve({ done: 1, data })
+        resolve({ done: 1, data})
       })
         .promise();
     } catch (error) {
@@ -53,7 +53,7 @@ const uploadObject = async function (objectData) {
 }
 
 const deleteObject = async function (objectData) {
-  return await new Promise((resolve, reject) => {
+  return await new Promise(async (resolve, reject) => {
     try {
       await s3.deleteObject({
         Bucket: BUCKET,

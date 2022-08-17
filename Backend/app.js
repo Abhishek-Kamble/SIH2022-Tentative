@@ -19,6 +19,8 @@ var Login = require('./routes/Login/controller')
 var StaffDelete = require('./routes/Admin/RemoveStaff/controller')
 var StaffData = require('./routes/Admin/GetStaff/controller');
 var UserRegister = require('./routes/User/Register/controller');
+var PropertyRegistration = require('./routes/Property/controller');
+
 // Routes
 expressApp.use('/login',Login);
 
@@ -28,6 +30,7 @@ expressApp.use('/staffregistor',AuthorizationRoute.validateToken,StaffRegistor);
 expressApp.use('/verification',Verification);
 expressApp.use('/staffd',AuthorizationRoute.validateToken,StaffDelete)
 expressApp.use('/staffg',AuthorizationRoute.validateToken,StaffData)
+expressApp.use('/PropertyRegister',PropertyRegistration);
 
 expressApp.listen(8000,function(){
     console.log("server has started on port 8000");

@@ -41,6 +41,11 @@ const users = sequelize.define(
       type: Sequelize.DataTypes.INTEGER(1),
       allowNull: false,
       defaultValue: 5  // 1 admin | 2 staff  | 5 user
+    },
+    Rdate:{
+      type: Sequelize.DataTypes.DATE,
+      allowNull: false,
+      defaultValue: Date.now()
     }
   },
   {

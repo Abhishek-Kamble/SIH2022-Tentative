@@ -3,8 +3,8 @@ const Sequelize = require('sequelize');
 const sequelize = require('../serviceHost').sequelize
 const zoneData = require('./zoneData')
 const users = require('./user')
-const Property = sequelize.define(
-    'property',
+const properties = sequelize.define(
+    'properties',
     {
         property_id:{
             type: Sequelize.DataTypes.INTEGER(11),
@@ -12,11 +12,11 @@ const Property = sequelize.define(
             primaryKey: true,
         },
         zone_id: {
-            type: Sequelize.DataTypes.NUMBER, // zone id from the zoneData
+            type: Sequelize.DataTypes.INTEGER(11), // zone id from the zoneData
             allowNull: false,
             references: {
                 model: zoneData,
-                key: 'zones',
+                key: 'zone_id',
             },
         },
         user_id: {
@@ -24,11 +24,11 @@ const Property = sequelize.define(
             allowNull: false,
             references: {
                 model: users,
-                key: 'users',
+                key: 'user_id',
             },
         },
         areacovered: {
-            type: Sequelize.DataTypes.NUMBER, // in sq meter
+            type: Sequelize.DataTypes.INTEGER(10), // in sq meter
             allowNull: false,
         },
         yearconstruction: {
@@ -40,34 +40,38 @@ const Property = sequelize.define(
             | 6 - 3star and above hotels, towers, hoarding
         */
         use: {
-            type: Sequelize.DataTypes.NUMBER,  
+            type: Sequelize.DataTypes.INTEGER(5),  
             allowNull: false,
         },
         /* Type of Construction - 1 - RCC building (pucca ) | 2 - semi RCC building (semi pucca ) | 3 - non rcc building ( kuchcha ) */
         constructortype: {
-            type: Sequelize.DataTypes.NUMBER,
+            type: Sequelize.DataTypes.INTEGER(5),
             allowNull: false,
         },
         /* Occupancy Type - 1.Self occupied | 2.Rented out | 3.vacant plot */
         occupancytype: {
-            type: Sequelize.DataTypes.NUMBER,
+            type: Sequelize.DataTypes.INTEGER(2),
             allowNull: false,
         },
         /* Property Type -  1.Residential Property | 2.Commercial Property | 3.Industrial  Property  */
         type: {
-            type: Sequelize.DataTypes.NUMBER,
+            type: Sequelize.DataTypes.INTEGER(2),
             allowNull: false,
         },
         isVerified: {
             type: Sequelize.DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: false
-        }
+        },
+        Registration_date: {
+            type: Sequelize.DataTypes.DATE,
+            allowNull: false,
+        },
 
     },
     {
-        table: 'property',
+        table: 'properties',
     }
 );
 
-module.exports = Property;
+module.exports = properties;

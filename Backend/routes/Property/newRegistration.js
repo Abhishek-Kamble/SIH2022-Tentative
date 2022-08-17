@@ -2,6 +2,9 @@ const Sequelize = require('sequelize');
 const DatabaseRepository = require('../../services/DataBaseQuery')
 const sequelize = require('../../serviceHost').sequelize
 const propertyID = require('./propertyId').propertyid
+// const s3Handler = require('../../services/s3handler')
+const property = require('../../models/property')
+
 require('dotenv').config();
 
 module.exports.registration = async function (req) {
@@ -9,18 +12,32 @@ module.exports.registration = async function (req) {
     try {
       const transaction = await sequelize.transaction();
 
-      const property_id = propertyID;
+      const property_id = await propertyID(req.body.zone_id);
+      
+      // const docId = s3Handler.uploader(req);
+      
+      Data = {
+        "property_id":property_id,
+        "areacovered": req.body.areacovered,
+        "yearconstruction": new Date().toJSON().slice(0, 19).replace('T', ' '),
+        "zone_id": req.body.zone_id,
+        "user_id": req.body.user_id,
+        "use": req.body.use,
+        "constructortype": req.body.constructortype,
+        "occupancytype": req.body.occupancytype,
+        "type": req.body.type,
+        "Registration_date":new Date().toJSON().slice(0, 19).replace('T', ' '),
+      }
 
-      var TE = `INSERT INTO property(propertyID, areacovered, yearconstruction, zone_id, user_id, use, constructortype, occupancytype, type) 
-      VALUES(${req.body.propertyID}, ${req.body.areacovered}, ${req.body.yearconstruction}, ${req.body.zone_id}, ${req.body.user_id}, ${req.body.use}, ${req.body.constructortype}, ${req.body.occupancytype}, ${req.body.type})`;
 
-      var GetTERes = await DatabaseRepository.query(TE, { replacement: [], type: Sequelize.QueryTypes.INSERT_ONE });
+      const PropertyData = await DatabaseRepository.insertOne(property,Data,null,transaction);
+      
+      console.log(PropertyData);
 
-      console.log(GetTERes);
-
-      resolve({done: 1, mesage: "Data inserted into DB!"});
+      resolve({ done: 1, mesage: "Data inserted into DB!" });
     } catch (error) {
-      reject({done: 0, message: "registration failed!!"});
+      console.log(error);
+      reject({ done: 0, message: "registration failed!!" });
     }
   })
 }
