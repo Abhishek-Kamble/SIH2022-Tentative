@@ -32,6 +32,11 @@ const users = sequelize.define(
       type: Sequelize.DataTypes.STRING(80),
       allowNull: false,
     },
+    isVerified: {
+      type: Sequelize.DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
     role: {
       type: Sequelize.DataTypes.INTEGER(1),
       allowNull: false,

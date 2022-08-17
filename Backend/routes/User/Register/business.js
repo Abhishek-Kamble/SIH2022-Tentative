@@ -25,7 +25,7 @@ register = async function(req) {
 
             var userD = req.body;
             
-            // const userData = DatabaseRepository.insertOne(users,userD,null,transaction);
+            const userData = DatabaseRepository.insertOne(users,userD,null,transaction);
             
             // send email function
 

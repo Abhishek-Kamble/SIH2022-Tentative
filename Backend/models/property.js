@@ -6,13 +6,10 @@ const users = require('./user')
 const Property = sequelize.define(
     'property',
     {
-        areacovered: {
-            type: Sequelize.DataTypes.NUMBER, // in sq meter
+        property_id:{
+            type: Sequelize.DataTypes.INTEGER(11),
             allowNull: false,
-        },
-        yearconstruction: {
-            type: Sequelize.DataTypes.DATE, // Date of construction year
-            allowNull: false,
+            primaryKey: true,
         },
         zone_id: {
             type: Sequelize.DataTypes.NUMBER, // zone id from the zoneData
@@ -29,6 +26,14 @@ const Property = sequelize.define(
                 model: users,
                 key: 'users',
             },
+        },
+        areacovered: {
+            type: Sequelize.DataTypes.NUMBER, // in sq meter
+            allowNull: false,
+        },
+        yearconstruction: {
+            type: Sequelize.DataTypes.DATE, // Date of construction year
+            allowNull: false,
         },
         /* use -  1 - Residential Purpose | 2 - Non residential public purpose | 3 - Non residential public utility | 
             4 - Industry, entertainment and clubs | 5 - Restaurants, hotels up to 2 star rating 
@@ -53,6 +58,11 @@ const Property = sequelize.define(
             type: Sequelize.DataTypes.NUMBER,
             allowNull: false,
         },
+        isVerified: {
+            type: Sequelize.DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        }
 
     },
     {

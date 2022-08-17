@@ -7,7 +7,7 @@ router.post('/', async (req, res, next) => {
     await newRegistration.registration(req).then((data) => {
       res.send(data);
     }).catch((err) => {
-      res.send(err.message);
+      res.send(err);
     })
 
   } catch (err) {

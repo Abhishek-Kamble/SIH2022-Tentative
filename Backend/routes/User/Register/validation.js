@@ -1,3 +1,7 @@
+var emailRegex = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
+var DatabaseRepository = require('./../../../services/DataBaseQuery')
+const Sequelize = require('sequelize');
+const mysql = require('mysql2');
 
 function isEmailValid(email) {
     if (!email)
@@ -49,13 +53,13 @@ var ValidateDatabase = async function (req) {
             }
 
 
-            var TE = `SELECT COUNT(*) as cnt FROM users where email=${mailID} or mobile_number=${mobNo}`;
+            var TE = 'SELECT COUNT(*) as cnt FROM users where email=' + mysql.escape(mailID) + ' or mobile_number=' + mysql.escape(mobNo);
 
             var GetTERes = await DatabaseRepository.query(TE, {
                 replacement: [], type: Sequelize.QueryTypes.SELECT
             });
-
-            if (!(GetTERes.length > 0)) {
+            console.log(GetTERes)
+            if (GetTERes.length > 0) {
                 throw "Email and Mobile number are already in use";
             }
 
@@ -63,6 +67,7 @@ var ValidateDatabase = async function (req) {
             resolve();
 
         } catch (err) {
+            console.log(err);
             reject(err);
         }
     })

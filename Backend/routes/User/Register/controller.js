@@ -10,12 +10,12 @@ router.post('/', async (req, res, next) => {
         await business.register(req).then((data) => {
             res.send(data);
           }).catch((err) => {
-            res.send(err.message);
+            res.send(err);
           })
     }).catch(err =>{
-        res.send(err.message);
+        res.send(err);
     })
-    
+
   } catch (err) {
     console.log(err);
     res.status(400).send(err);
