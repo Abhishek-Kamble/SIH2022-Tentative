@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize');
-
-const sequelize = require('../serviceHost').sequelize
-
+const Express = require('../../../serviceHost').Express
+const router = Express.Router();
+const zoneRegister=require('./zoneRegister')
+/*
 const zones = sequelize.define(
   'zones',
   {
@@ -25,7 +25,7 @@ const zones = sequelize.define(
       defaultValue: 0
     },
     industrial_per: {
-      type: Sequelize.DataTypes.INTEGER(3),
+      type: Sequelize.DataTypes.STRING(50),
       allowNull: false,
       defaultValue: 0
     },
@@ -40,5 +40,20 @@ const zones = sequelize.define(
     table: 'zones',
   }
 );
+*/
+router.post('/',function(req,res,next)
+{
+      console.log(req.body);
+      try{
+         zoneRegister.zoneRegister(req).then(data=>{
+            res.send(data);
+         })
+      }
+      catch(error)
+      {
+          res.send(error);
+      }
 
-module.exports = zones;
+})
+
+module.exports=router;
