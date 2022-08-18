@@ -7,7 +7,7 @@ router.post('/', async (req, res, next) => {
     await business.login(req).then((data) => {
       res.send(data);
     }).catch((err) => {
-      res.send(err.message);
+      res.send(err);
     })
 
   } catch (err) {

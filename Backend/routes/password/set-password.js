@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const DatabaseRepository = require('../../services/DataBaseQuery')
 const sequelize = require('../../serviceHost').sequelize
 const bcrypt = require('bcrypt');
+const mysql = require('mysql2');
 require('dotenv').config();
 
 module.exports.setPassword = async function (req) {
@@ -13,21 +14,21 @@ module.exports.setPassword = async function (req) {
       if (req.body.id == 2) {
         TE = `SELECT * FROM employees WHERE employee_id=${req.body.uid}`
       } else if (req.body.id == 5) {
-        TE = `SELECT * FROM users WHERE uid=${req.body.uid}`
+        TE = `SELECT * FROM users WHERE user_id=${req.body.uid}`
       }
 
       var GetTERes = await DatabaseRepository.query(TE, { replacement: [], type: Sequelize.QueryTypes.SELECT });
-      
+      var password = req.body.password.toString();
       const hashedPassword = await bcrypt.hash(password, 12);
       if(GetTERes.length > 0) {
         // update the employee isVerifed
         if(GetTERes[0].isVerified == 1){
           resolve({found:2, message: "Already Verified!"})
         }
-        else if (id == 1 || id == 2) {
-          TE = `UPDATE employees SET password=${hashedPassword} WHERE employee_id=${uid}`
+        else if (req.body.id == 1 || req.body.id == 2) {
+          TE = 'UPDATE employees SET password='+mysql.escape(hashedPassword)+',isVerified=1 WHERE employee_id='+mysql.escape(req.body.uid)
         } else if (id == 5) {
-          TE = `UPDATE users SET password=${hashedPassword} WHERE uid=${uid}`
+          TE = 'UPDATE users SET password='+mysql.escape(hashedPassword)+'isVerified=1 WHERE user_id='+mysql.escape(req.body.uid)
         }
         var GetTERes = await DatabaseRepository.query(TE, { replacement: [], type: Sequelize.QueryTypes.UPDATE });
         
@@ -39,6 +40,7 @@ module.exports.setPassword = async function (req) {
       console.log("GET TE res: ", GetTERes);
 
     } catch (error) {
+      console.log(error);
       reject(error);
     }
   })

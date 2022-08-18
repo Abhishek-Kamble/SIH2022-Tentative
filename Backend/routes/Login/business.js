@@ -14,15 +14,17 @@ module.exports.login = async function (req) {
 
       console.log(id)
       var TE;
-      if (id == 2) {
+      if (id == 2 || id == 1) {
         TE = 'SELECT * FROM employees WHERE email='+mysql.escape(email);
       } else {
         if (id == 5) {
         TE = 'SELECT * FROM users WHERE email='+mysql.escape(email);
         }else {
             reject("Invalid Id");
+            return;
         }
       }
+      console.log(TE)
 
       var GetTERes = await DatabaseRepository.query(TE, { replacement: [], type: Sequelize.QueryTypes.SELECT });
       if(GetTERes.length > 0) {

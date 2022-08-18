@@ -3,7 +3,7 @@ const router = Express.Router();
 const setpassword = require('./set-password');
 const forgotPassword = require('./forgot-password');
 
-router.post('/', async (req, res, next) => {
+router.post('/setPassword', async (req, res, next) => {
   try {
     await setpassword.setPassword(req).then((data) => {
       res.send(data);
