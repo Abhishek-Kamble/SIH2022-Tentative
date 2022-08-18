@@ -42,10 +42,10 @@ const users = sequelize.define(
       allowNull: false,
       defaultValue: 5  // 1 admin | 2 staff  | 5 user
     },
-    Rdate:{
+    Registration_date:{
       type: Sequelize.DataTypes.DATE,
       allowNull: false,
-      defaultValue: Date.now()
+      defaultValue: (new Date().toJSON().slice(0, 19).replace('T', ' '))
     }
   },
   {

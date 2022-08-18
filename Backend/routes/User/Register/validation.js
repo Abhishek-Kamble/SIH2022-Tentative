@@ -59,7 +59,7 @@ var ValidateDatabase = async function (req) {
                 replacement: [], type: Sequelize.QueryTypes.SELECT
             });
             console.log(GetTERes)
-            if (GetTERes.length > 0) {
+            if (GetTERes[0].cnt > 0) {
                 throw "Email and Mobile number are already in use";
             }
 

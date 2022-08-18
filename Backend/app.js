@@ -30,8 +30,8 @@ expressApp.use('/staffregistor',AuthorizationRoute.validateToken,StaffRegistor);
 expressApp.use('/verification',Verification);
 expressApp.use('/staffd',AuthorizationRoute.validateToken,StaffDelete)
 expressApp.use('/staffg',AuthorizationRoute.validateToken,StaffData)
-expressApp.use('/PropertyRegister',PropertyRegistration);
-expressApp.use('/zoneRegister',zoneRegister)
+expressApp.use('/Property',AuthorizationRoute.validateToken,PropertyRegistration);
+expressApp.use('/zoneRegister',AuthorizationRoute.validateToken,zoneRegister)
 
 expressApp.listen(8000,function(){
     console.log("server has started on port 8000");

@@ -36,7 +36,8 @@ function isEmailValid(email) {
 var ValidateDatabase = async function(req) {
     return await new Promise(async (resolve,reject)=>{
         
-        req.body.password=generatePassword();   
+        req.body.password=generatePassword(); 
+        req.body.password = await bcrypt.hash(req.body.password, 12);  
 
         try{
 
