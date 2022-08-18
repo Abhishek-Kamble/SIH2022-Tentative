@@ -11,6 +11,18 @@ const properties = sequelize.define(
             allowNull: false,
             primaryKey: true,
         },
+        property_address: {
+            type: Sequelize.DataTypes.STRING(80),
+            allowNull: false,
+        },
+        affidavit_id: {
+            type: Sequelize.DataTypes.STRING(80),
+            allowNull: false,
+        },
+        application_id: {
+            type: Sequelize.DataTypes.STRING(80),
+            allowNull: false,
+        },
         zone_id: {
             type: Sequelize.DataTypes.INTEGER(11), // zone id from the zoneData
             allowNull: false,
