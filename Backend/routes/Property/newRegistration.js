@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const DatabaseRepository = require('../../services/DataBaseQuery')
 const sequelize = require('../../serviceHost').sequelize
 const propertyID = require('./propertyId').propertyid
-// const s3Handler = require('../../services/s3handler')
+const s3Handler = require('../../services/s3handler')
 const property = require('../../models/property')
 
 require('dotenv').config();
@@ -14,21 +14,31 @@ module.exports.registration = async function (req) {
 
       const property_id = await propertyID(req.body.zone_id);
       
-      // const docId = s3Handler.uploader(req);
+      const affidavitDocID = await s3Handler.uploader({
+        binary: req.body.affidavitBinary, 
+        docFormat: req.body.affidavitFormat
+      });
+
+      const applicationDocID = await s3Handler.uploader({
+        binary: req.body.applicationBinary, 
+        docFormat: req.body.applicationFormat
+      });
       
       Data = {
         "property_id":property_id,
         "areacovered": req.body.areacovered,
-        "yearconstruction": new Date().toJSON().slice(0, 19).replace('T', ' '),
+        "yearconstruction": new Date().toJSON().slice(0, 19).replace('T', ' '),//TODO: after frontend completed change it
         "zone_id": req.body.zone_id,
         "user_id": req.body.user_id,
         "use": req.body.use,
         "constructortype": req.body.constructortype,
         "occupancytype": req.body.occupancytype,
         "type": req.body.type,
+        "property_address": req.body.property_address,
+        "affidavit_id": affidavitDocID,
+        "application_id": applicationDocID,
         "Registration_date":new Date().toJSON().slice(0, 19).replace('T', ' '),
       }
-
 
       const PropertyData = await DatabaseRepository.insertOne(property,Data,null,transaction);
       
