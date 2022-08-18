@@ -23,7 +23,17 @@ register = async function(req) {
 
             /* To Add Data */
 
-            var employeeD = req.body;
+            var employeeD = {
+                "fname":req.body.fname,
+                "lname":req.body.lname,
+                "mobile_number":req.body.mobile_number.toString(),
+                "email":req.body.email,
+                "password":req.body.password,
+                "isVerified":false,
+                "role":2,
+                "employee_id":req.body.employee_id,
+            };
+            // console.log("---------",employeeD.mobile_number);
             
             const EmployeeData = DatabaseRepository.insertOne(employees,employeeD,null,transaction);
             

@@ -1,3 +1,8 @@
+const bcrypt = require('bcrypt')
+const mysql = require('mysql2');
+const DatabaseRepository = require('../../../services/DataBaseQuery')
+const Sequelize = require('sequelize');
+
 function generatePassword() {
     var length = 8,
         charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
@@ -63,7 +68,15 @@ var ValidateDatabase = async function(req) {
                  throw "mobile number is invalid";
             } 
             
-            
+            var TE = 'SELECT COUNT(*) as cnt FROM employees where email=' + mysql.escape(mailID) + ' or mobile_number=' + mysql.escape(mobNo);
+
+            var GetTERes = await DatabaseRepository.query(TE, {
+                replacement: [], type: Sequelize.QueryTypes.SELECT
+            });
+            console.log(GetTERes)
+            if (GetTERes[0].cnt > 0) {
+                throw "Email and Mobile number are already in use";
+            }
 
             resolve();
 

@@ -1,7 +1,8 @@
 const Express = require('../../../serviceHost').Express
 const router = Express.Router();
 const register = require('./register');
-router.get('/', async (req, res, next)=>{
+const ValidateDatabase = require('./validate');
+router.get('/', async (req, res, next) => {
     try {
         res.status(200).send("Hello World!");
     } catch (err) {
@@ -23,17 +24,18 @@ password -
 
 aws add -> 
 */
-router.post('/', async (req, res, next)=>{
+router.post('/', async (req, res, next) => {
     try {
-        console.log(req.body);
-        // res.status(200).send("Hello World!!");
-        await register.register(req).then((data)=>{
-            res.send(data);
-        }).catch((err)=>{
-            res.send(err.message);
+
+        await ValidateDatabase(req).then(async(data) => {
+            await register.register(req).then((data) => {
+                res.send(data);
+            }).catch((err) => {
+                res.send(err);
+            })
+        }).catch((err) => {
+            res.send(err);
         })
-        
-        
     } catch (err) {
         res.status(400).send(err);
     }
