@@ -16,15 +16,24 @@ var AuthorizationRoute = require('./middleware/AuthorizationController')
 var StaffRegistor = require('./routes/Admin/staffRegistor/controller');
 var Verification = require('./routes/verification/controller')
 var Login = require('./routes/Login/controller')
-
-
+var StaffDelete = require('./routes/Admin/RemoveStaff/controller')
+var StaffData = require('./routes/Admin/GetStaff/controller');
+var UserRegister = require('./routes/User/Register/controller');
+var PropertyRegistration = require('./routes/Property/controller');
+const  zoneRegister = require('./routes/Admin/zoneRegister/zoneController');
+const Password = require('./routes/password/controller');
+// Routes
 expressApp.use('/login',Login);
 
 // Middleware API
-
+expressApp.use('/UserRegister',UserRegister);
 expressApp.use('/staffregistor',AuthorizationRoute.validateToken,StaffRegistor);
 expressApp.use('/verification',Verification);
-
+expressApp.use('/staffd',AuthorizationRoute.validateToken,StaffDelete)
+expressApp.use('/staffg',AuthorizationRoute.validateToken,StaffData)
+expressApp.use('/Property',AuthorizationRoute.validateToken,PropertyRegistration);
+expressApp.use('/zoneRegister',AuthorizationRoute.validateToken,zoneRegister)
+expressApp.use('/p',Password);
 
 expressApp.listen(8000,function(){
     console.log("server has started on port 8000");

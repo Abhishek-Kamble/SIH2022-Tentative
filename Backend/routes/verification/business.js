@@ -12,12 +12,13 @@ module.exports.verification = async function (req) {
       const uid = req.query.uid;
 
       const transaction = await sequelize.transaction();
+      
       console.log(id, uid)
       var TE;
       if (id == 2) {
         TE = `SELECT * FROM employees WHERE employee_id=${uid}`
       } else if (id == 5) {
-        TE = `SELECT * FROM users WHERE uid=${uid}`
+        TE = `SELECT * FROM users WHERE user_id=${uid}`
       }
 
       var GetTERes = await DatabaseRepository.query(TE, { replacement: [], type: Sequelize.QueryTypes.SELECT });
@@ -30,7 +31,7 @@ module.exports.verification = async function (req) {
         else if (id == 2) {
           TE = `UPDATE employees SET isVerified=1 WHERE employee_id=${uid}`
         } else if (id == 5) {
-          TE = `UPDATE users SET isVerified=1 WHERE uid=${uid}`
+          TE = `UPDATE users SET isVerified=1 WHERE user_id=${uid}`
         }
         var GetTERes = await DatabaseRepository.query(TE, { replacement: [], type: Sequelize.QueryTypes.UPDATE });
         

@@ -19,7 +19,7 @@ const employees = sequelize.define(
             primaryKey: true,
         },
         mobile_number:{
-            type: Sequelize.DataTypes.INTEGER(10),
+            type: Sequelize.DataTypes.STRING(10),
             allowNull: false,
             unique: true,
         },
