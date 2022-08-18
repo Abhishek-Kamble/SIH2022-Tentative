@@ -8,7 +8,7 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 30%;
 }
 
 a {
@@ -57,7 +57,7 @@ li {
   font-size: 2.5rem;
   font-weight: 400;
   text-transform: uppercase;
-  background: -webkit-linear-gradient(#eee, rgb(69, 57, 248));
+  background: -webkit-linear-gradient(#eee, #2218A7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -67,7 +67,7 @@ li {
 }
 
 .menu-link ul li {
-  font-size: 2.1rem;
+  font-size: 1.7rem;
   padding: 25px;
 }
 
@@ -156,6 +156,7 @@ li {
   .mobile-menu-link {
     background-color: white;
     height: 20rem;
+    font-size: 20px;
     display: grid;
     grid-column: 2/5;
     align-items: center;
@@ -173,7 +174,10 @@ li {
     flex-direction: column;
     align-items: flex-start;
   }
-
+  .mobile-menu-link ul li{
+    width: 90%;
+    border-bottom: 2px solid #2218A7;
+  }
   .mobile-menu-link ul li:first-child {
     transition-delay: 0.2s;
   }
