@@ -18,11 +18,10 @@ const downloadObject = async function (objectData) {
         Key: objectData.key,
         Expires: 300
       });
-      console.log({ url });
-      resolve({ done: 1, url });
+      resolve({ done: 1, objURL: url});
     } catch (error) {
       console.log(error)
-      reject({ done: 0, error })
+      reject({ done: 0, message: "Error in master S3 " + error })
     }
   })
 }

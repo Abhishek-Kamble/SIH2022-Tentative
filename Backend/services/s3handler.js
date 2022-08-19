@@ -22,23 +22,17 @@ const uploader = async function (fileData) {
   })
 }
 
-const downloader = async function (req) {
+const downloader = async function (fileData) {
   return await new Promise(async (resolve, reject) => {
     try {
-      const objectData = {
-        key: req.body.key
-      }
+      const objectData = { key: fileData.key }
 
-      const link = s3Service.downloadObject(objectData);
+      const link = await s3Service.downloadObject(objectData);
 
-      if(link.done === 0){
-        resolve({done: 0, message:"Error while downloading"})
-      }else{
-        resolve(link);
-      }
-
+      resolve(link.objURL);
+      
     } catch (error) {
-      reject({done: 0, message: error.message})
+      reject({done: 0, message: "Error in S3 handler " + error})
     }
   })
 }
