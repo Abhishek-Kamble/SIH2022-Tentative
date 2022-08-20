@@ -8,6 +8,7 @@ import StaffInfo from "./components/Admin/StaffInfo"
 import UserDashboard from "./components/User/Dashboard"
 import Property from "./components/User/Property"
 import Bill from "./components/User/Bill/Bill";
+import PRegistration from "./components/Staff/Property/Registration"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
                             <Route exact path="/Register" component={StaffInfo}/>
                             <Route exact path="/about" component={Property}/>
                             <Route exact path="/login" component={UserDashboard}/>
+                            <Route exact path="/pregister" component={PRegistration} />
                         </Switch>
               </div>
         </container>
