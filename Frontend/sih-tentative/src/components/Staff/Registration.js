@@ -4,9 +4,10 @@ import FormInput from "./views/FormInput";
 
 const Registration = () => {
   const [values, setValues] = useState({
-    username: "",
+    fname: "",
+    lname: "",
     email: "",
-    birthday: "",
+    mobile_number: "",
     password: "",
     confirmPassword: "",
   });
@@ -88,7 +89,9 @@ const Registration = () => {
             onChange={onChange}
           />
         ))}
-        <button>Submit</button>
+        <div className="btnn">
+          <button>Submit</button>
+        </div>
       </form>
     </div>
   );

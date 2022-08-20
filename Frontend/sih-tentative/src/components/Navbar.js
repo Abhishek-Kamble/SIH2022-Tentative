@@ -19,7 +19,7 @@ const Navbar = () => {
         {/* 2nd menu part  */}
         <div
           className={
-            showMediaIcons ? "menu-link mobile-menu-link" : "menu-link"
+            showMediaIcons ? "mobile-menu-link" : "menu-link"
           }>
           <ul>
             <li>
@@ -32,7 +32,7 @@ const Navbar = () => {
               <Link to="/Register">Register</Link>
             </li>
             <li>
-              <Link to="/contact">contact</Link>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
         </div>
@@ -43,7 +43,7 @@ const Navbar = () => {
 
           {/* hamburget menu start  */}
           <div className="hamburger-menu">
-            <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
+            <a style={{color: "white"}} href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
               <GiHamburgerMenu />
             </a>
           </div>
