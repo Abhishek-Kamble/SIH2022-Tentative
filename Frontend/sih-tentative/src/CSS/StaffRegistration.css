@@ -16,10 +16,11 @@
 
 .btnn{
 margin-top: 20px;
-width: 107%;
+width: 100%;
 border-radius: 30px;
 align-self: center;
 }
+
 
 
 form{
@@ -43,7 +44,7 @@ h1{
   font-size: 2.5rem;
 }
 
-button{
+.btn_submit{
   width: 100%;
   height: 50px;
   padding: 10px;
@@ -56,6 +57,10 @@ button{
   cursor: pointer;
   margin: 20px;
   /* margin-bottom: 30px; */
+}
+
+.btn_submit:hover{
+  background-color: rgb(61, 144, 177);
 }
 
 

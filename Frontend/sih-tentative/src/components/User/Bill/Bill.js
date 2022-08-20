@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import Bill_generation from './Bill_generation';
+import React from 'react'
+import BillGeneration from './Bill_generation';
+import { Button, Container } from 'react-bootstrap';
 
 const Bill=() => {
     const printOrder = () => {
@@ -12,11 +13,14 @@ const Bill=() => {
     }
     return (
         <div>
-            <div>Bill</div>
-            <button onClick={printOrder}>print</button>
+            
             <div id="printme">
-                <Bill_generation  />
+                <BillGeneration  />
             </div>
+            <Container className="print_btn">
+                <Button style={{fontSize:'25px', padding:'10px 20px', borderRadius:'2rem'}} onClick={printOrder}>Print</Button>
+            </Container>
+            
         </div>
     )
   

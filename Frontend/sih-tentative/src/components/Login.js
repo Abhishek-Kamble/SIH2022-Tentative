@@ -79,7 +79,7 @@ const Login = () => {
         </div>
 
         <div>
-          <button  className="btn" type="submit">Login</button>
+          <button onClick={submitHandler}  className="btn" type="submit">Login</button>
           <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%" }}>
             Don't have a account? <Link to="/signup">Create account</Link>
           </span>
