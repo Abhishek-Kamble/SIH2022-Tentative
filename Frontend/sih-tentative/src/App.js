@@ -9,11 +9,11 @@ import UserDashboard from "./components/User/Dashboard"
 import Property from "./components/User/Property"
 import Bill from "./components/User/Bill/Bill";
 import Logout from "./components/Logout";
+import PRegistration from "./components/Staff/Property/Registration"
 
 function App() {
   return (
     <>
-
       <Navbar role='admin'></Navbar>
       <container>
         <div className="content">
@@ -29,12 +29,13 @@ function App() {
             <Route exact path="/userDashboard" component={UserDashboard} />
             <Route exact path="/property" component={Property} />
 
-
+            <Route exact path="/pregister" component={PRegistration} />
             <Route exact path="/logout" component={Logout} />
-            
+
           </Switch>
         </div>
       </container>
+
     </>
   );
 }
