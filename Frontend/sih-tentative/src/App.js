@@ -4,7 +4,10 @@ import LandingPage from "./components/LandingPage";
 import Navbar from "./components/Navbar";
 import Registration from "./components/Staff/Registration"
 import StaffInfo from "./components/Admin/StaffInfo"
-import Login from "./components/Login"
+ import Login from "./components/Login"
+import UserDashboard from "./components/User/Dashboard"
+import Property from "./components/User/Property"
+import Bill from "./components/User/Bill/Bill";
 
 function App() {
   return (
@@ -14,10 +17,10 @@ function App() {
           <container>
               <div className="content">
                         <Switch>
-                            <Route exact path="/" component={LandingPage}/>
-                            <Route exact path="/Register" component={Registration}/>
-                            <Route exact path="/about" component={StaffInfo}/>
-                            <Route exact path="/login" component={Login}/>
+                            <Route exact path="/" component={Registration}/>
+                            <Route exact path="/Register" component={StaffInfo}/>
+                            <Route exact path="/about" component={Property}/>
+                            <Route exact path="/login" component={UserDashboard}/>
                         </Switch>
               </div>
         </container>

@@ -1,0 +1,15 @@
+.slider-container {
+   
+    max-height: 100vh;
+  width: auto; /*100vw*/
+}
+
+.tabs{
+  margin: 5%;
+  padding: 70px;
+}
+
+.main-card{
+  margin-top: 10px;
+}
+

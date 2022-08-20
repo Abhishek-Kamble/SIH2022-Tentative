@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import "../CSS/Login.css"
+import React, {useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
@@ -11,6 +10,10 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
 const Login = () => {
+  useEffect(()=>{
+    require("../CSS/Login.css")
+  })
+
   const [data, setData] = useState({
     email: "",
     password: "",

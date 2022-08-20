@@ -1,8 +1,11 @@
-import { useState } from "react";
-import "../../CSS/StaffRegistration.css";
+import { useEffect, useState } from "react";
 import FormInput from "./views/FormInput";
 
 const Registration = () => {
+  useEffect(()=>{
+    require("../../CSS/StaffRegistration.css")
+  })
+
   const [values, setValues] = useState({
     fname: "",
     lname: "",
