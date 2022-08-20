@@ -1,0 +1,26 @@
+.tab-bar {
+  position: relative;
+  margin: 2%;
+  padding: 30px;
+}
+
+h1 {
+  color: rgb(69, 57, 248);
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.add_btnn {
+  margin-top: 2%;
+  margin-left: 5%;
+
+}
+
+.btn_plus {
+  background-color: #2218A7;
+  color: white;
+  font-size: 20px;
+  padding: 20px 25px;
+  border-radius: 50px;
+  border-color: #2218A7;
+}

@@ -14,7 +14,7 @@ const employees = sequelize.define(
             allowNull:false,
         },
         employee_id: {
-            type: Sequelize.DataTypes.INTEGER(11),
+            type: Sequelize.DataTypes.STRING(11),
             allowNull: false,
             primaryKey: true,
         },

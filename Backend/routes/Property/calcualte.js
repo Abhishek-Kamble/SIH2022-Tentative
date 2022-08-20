@@ -28,12 +28,19 @@ const OccupancyType = [
 ]
 //TODO: Complete Age Factor 
 const ageFactor = function(data){
+  
   return 1.0;
 }
 
-const taxrate = function(data){
-  return 11;
+const taxrate = function(data,id){
+  if(id == 1){
+    return data[0].resendential_per;
+  }else if(id == 2){
+    return data[0].commercial_per;
+  }
+  return data[0].industrial_per;
 }
+
 module.exports.calcualte = async function (req) {
   return await new Promise(async (resolve, reject) => {
     try {
@@ -53,7 +60,7 @@ module.exports.calcualte = async function (req) {
       var PropertyValue = PropertyData[0].areacovered * ageFactor(PropertyData[0].yearconstruction) * useProperty[(PropertyData[0].use-1)] * ConstructionType[(PropertyData[0].constructortype-1)] * OccupancyType[PropertyData[0].occupancytype-1] * ZoneData[0].uav;
 
       // Calcualte Tax Value
-      var Tax = PropertyValue*taxrate(ZoneData)/100;
+      var Tax = PropertyValue*taxrate(ZoneData,PropertyData[0].type)/100;
 
       // Reduce Rebates
       //TODO: complete Rebates for different vaules.

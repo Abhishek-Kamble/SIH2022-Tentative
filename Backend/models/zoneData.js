@@ -10,7 +10,7 @@ const zones = sequelize.define(
       allowNull: false,
     },
     zone_id: {
-      type: Sequelize.DataTypes.INTEGER(11),
+      type: Sequelize.DataTypes.STRING(11),
       allowNull: false,
       primaryKey: true,
     },
@@ -30,7 +30,7 @@ const zones = sequelize.define(
       defaultValue: 0
     },
     uav:{
-      type: Sequelize.DataTypes.INTEGER(10),
+      type: Sequelize.DataTypes.INTEGER(9),
       allowNull: false,
       defaultValue: 0,
     }
