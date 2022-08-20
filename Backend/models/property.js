@@ -7,7 +7,7 @@ const properties = sequelize.define(
     'properties',
     {
         property_id:{
-            type: Sequelize.DataTypes.INTEGER(11),
+            type: Sequelize.DataTypes.STRING(11),
             allowNull: false,
             primaryKey: true,
         },
@@ -24,7 +24,7 @@ const properties = sequelize.define(
             allowNull: false,
         },
         zone_id: {
-            type: Sequelize.DataTypes.INTEGER(11), // zone id from the zoneData
+            type: Sequelize.DataTypes.STRING(11), // zone id from the zoneData
             allowNull: false,
             references: {
                 model: zoneData,
@@ -32,7 +32,7 @@ const properties = sequelize.define(
             },
         },
         user_id: {
-            type: Sequelize.DataTypes.INTEGER(11),
+            type: Sequelize.DataTypes.STRING(11),
             allowNull: false,
             references: {
                 model: users,

@@ -10,7 +10,7 @@ const users = sequelize.define(
       allowNull: false,
     },
     user_id: {
-      type: Sequelize.DataTypes.INTEGER(11),
+      type: Sequelize.DataTypes.STRING(11),
       allowNull: false,
       primaryKey: true,
     },
@@ -19,7 +19,7 @@ const users = sequelize.define(
       allowNull: false,
     },
     mobile_number: {
-      type: Sequelize.DataTypes.INTEGER(10),
+      type: Sequelize.DataTypes.STRING(10),
       allowNull: false,
       unique: true,
     },
