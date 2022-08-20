@@ -1,19 +1,19 @@
 const s3Service = require('./s3');
 
-const uploader = async function (req) {
+const uploader = async function (fileData) {
   return await new Promise(async (resolve, reject) => {
     try {
-      const docId = new Date() + Math.random();
+      const docId =  (Date.now()).toString() + (Math.floor(Math.random()*10000)).toString();
       const objectData = {
-        body: req.body.binary,
-        key: docId
+        body: fileData.binary,
+        key: docId + fileData.docFormat
       }
       const link = s3Service.uploadObject(objectData);
 
       if(link.done === 0){
-        resolve({done: 0, message:"Error while uploading docuent!"})
+        reject({done: 0, message:"Error while uploading docuent!"})
       }else{
-        resolve({dockey: docId});
+        resolve(docId + fileData.docFormat);
       }
       
     } catch (error) {
@@ -22,23 +22,17 @@ const uploader = async function (req) {
   })
 }
 
-const downloader = async function (req) {
+const downloader = async function (fileData) {
   return await new Promise(async (resolve, reject) => {
     try {
-      const objectData = {
-        key: req.body.key
-      }
+      const objectData = { key: fileData.key }
 
-      const link = s3Service.downloadObject(objectData);
+      const link = await s3Service.downloadObject(objectData);
 
-      if(link.done === 0){
-        resolve({done: 0, message:"Error while downloading"})
-      }else{
-        resolve(link);
-      }
-
+      resolve(link.objURL);
+      
     } catch (error) {
-      reject({done: 0, message: error.message})
+      reject({done: 0, message: "Error in S3 handler " + error})
     }
   })
 }
