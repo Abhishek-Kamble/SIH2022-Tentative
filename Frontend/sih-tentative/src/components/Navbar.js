@@ -4,53 +4,195 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  console.log(props);
   const [showMediaIcons, setShowMediaIcons] = useState(false);
-  return (
-    <>
-      <nav className="main-nav">
-        {/* 1st logo part  */}
-        <div className="logo">
-          <h2>
+  if (props.role === 'admin') {
+    return (
+      <>
+        <nav className="main-nav">
+          {/* 1st logo part  */}
+          <div className="logo">
+            <h2>
               EGOV
-          </h2>
-        </div>
-
-        {/* 2nd menu part  */}
-        <div
-          className={
-            showMediaIcons ? "mobile-menu-link" : "menu-link"
-          }>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">about</Link>
-            </li>
-            <li>
-              <Link to="/Register">Register</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* 3rd social media links */}
-        <div className="social-media">
-           
-
-          {/* hamburget menu start  */}
-          <div className="hamburger-menu">
-            <a style={{color: "white"}} href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
-              <GiHamburgerMenu />
-            </a>
+            </h2>
           </div>
-        </div>
-      </nav>
-    </>
-  );
+
+          {/* 2nd menu part  */}
+          <div
+            className={
+              showMediaIcons ? "mobile-menu-link" : "menu-link"
+            }>
+            <ul>
+              <li>
+                <Link to="/adminDashboard">Home</Link>
+              </li>
+              <div class="dropdown-main">
+                <button class="menu-btn">Staff </button>
+                <div class="menu-content">
+                  <Link class="links-hidden" to="/staffRegistration">Registration</Link>
+                  <Link class="links-hidden" to="/staffInfo">Information</Link>
+                </div>
+              </div>
+              <li>
+                <Link to="/logout">Logout</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* 3rd social media links */}
+          <div className="social-media">
+
+
+            {/* hamburget menu start  */}
+            <div className="hamburger-menu">
+              <a style={{ color: "white" }} href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
+                <GiHamburgerMenu />
+              </a>
+            </div>
+          </div>
+        </nav>
+      </>
+    );
+  }
+  else if (props.role === 'user') {
+    return (
+      <>
+        <nav className="main-nav">
+          {/* 1st logo part  */}
+          <div className="logo">
+            <h2>
+              EGOV
+            </h2>
+          </div>
+
+          {/* 2nd menu part  */}
+          <div
+            className={
+              showMediaIcons ? "mobile-menu-link" : "menu-link"
+            }>
+            <ul>
+              <li>
+                <Link to="/userDashboard">Home</Link>
+              </li>
+              <li>
+                <Link to="/property">Property</Link>
+              </li>
+              <li>
+                <Link to="/logout">Logout</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* 3rd social media links */}
+          <div className="social-media">
+
+
+            {/* hamburget menu start  */}
+            <div className="hamburger-menu">
+              <a style={{ color: "white" }} href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
+                <GiHamburgerMenu />
+              </a>
+            </div>
+          </div>
+        </nav>
+      </>
+    );
+  }
+  else if (props.role === 'staff') {
+    return (
+      <>
+        <nav className="main-nav">
+          {/* 1st logo part  */}
+          <div className="logo">
+            <h2>
+              EGOV
+            </h2>
+          </div>
+
+          {/* 2nd menu part  */}
+          <div
+            className={
+              showMediaIcons ? "mobile-menu-link" : "menu-link"
+            }>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">about</Link>
+              </li>
+              <li>
+                <Link to="/Register">Register</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* 3rd social media links */}
+          <div className="social-media">
+
+
+            {/* hamburget menu start  */}
+            <div className="hamburger-menu">
+              <a style={{ color: "white" }} href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
+                <GiHamburgerMenu />
+              </a>
+            </div>
+          </div>
+        </nav>
+      </>
+    );
+  }
+  else {
+    return (
+      <>
+        <nav className="main-nav">
+          {/* 1st logo part  */}
+          <div className="logo">
+            <h2>
+              EGOV
+            </h2>
+          </div>
+
+          {/* 2nd menu part  */}
+          <div
+            className={
+              showMediaIcons ? "mobile-menu-link" : "menu-link"
+            }>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">about</Link>
+              </li>
+              <li>
+                <Link to="/Register">Register</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* 3rd social media links */}
+          <div className="social-media">
+
+
+            {/* hamburget menu start  */}
+            <div className="hamburger-menu">
+              <a style={{ color: "white" }} href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
+                <GiHamburgerMenu />
+              </a>
+            </div>
+          </div>
+        </nav>
+      </>
+    );
+  }
 };
 
 export default Navbar;
