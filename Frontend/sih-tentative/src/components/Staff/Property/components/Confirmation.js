@@ -2,6 +2,16 @@ import React from 'react'
 import { Container, Grid, List, ListItem, ListItemText, Button } from '@material-ui/core'
 
 
+function validate(value) {
+  const { property_address,areacovered,yearconstruction, zone_id,user_id,use,constructortype,occupancytype,type,aff_id_bd_name,aff_id_bd,app_id_bd_name,app_id_bd } = value
+  if(property_address && areacovered && yearconstruction &&  zone_id && use && constructortype && occupancytype && type && aff_id_bd_name && aff_id_bd && app_id_bd_name && app_id_bd){
+      return true;
+
+  }
+  return false;
+
+}
+
 const useProperty = [
   "Residential Purpose",
   " Non residential public purpose | ",
@@ -31,7 +41,13 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
   const { property_address,areacovered,yearconstruction, zone_id,user_id,use,constructortype,occupancytype,type,aff_id_bd_name,aff_id_bd,app_id_bd_name,app_id_bd } = values
   const Continue = e => {
     e.preventDefault();
-    nextStep();
+    if(validate(values)){
+      
+      nextStep();
+    } else {
+      alert("All Field are required")
+    }
+    
   }
 
   const Previous = e => {
@@ -40,7 +56,8 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
   }
 
   return (
-    <Container  component="main" maxWidth="xs">
+    <div className="pcform">
+      <Container  component="main" maxWidth="xs">
       <div>
         <List>
           <ListItem>
@@ -102,6 +119,7 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
         </Grid>
       </div>
     </Container>
+    </div>
   )
 }
 
