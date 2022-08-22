@@ -36,6 +36,20 @@ code {
   padding-bottom: 30px;
 }
 
+.pcform {
+  background: white;
+  width: 60%;
+  max-width: 100%!important;
+  margin-top:40px!important;
+  display: inline-block;
+  margin: auto;
+  /* border-radius: $border-radius-size + 5; */
+  position: relative;
+  text-align: center;
+  box-shadow: -1px 15px 30px -12px black;
+  padding-bottom: 30px;
+}
+
 .pform h1{
   font-size: 26px;
   color: black;
