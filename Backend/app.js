@@ -1,4 +1,4 @@
-var expressApp = require('./ServiceHost').expressApp;
+var expressApp = require('./serviceHost').expressApp;
 
 const cors = require('cors');
 
