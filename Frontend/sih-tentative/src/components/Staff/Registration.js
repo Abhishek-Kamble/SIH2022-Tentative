@@ -1,8 +1,11 @@
-import { useState } from "react";
-import "../../CSS/StaffRegistration.css";
+import { useEffect, useState } from "react";
 import FormInput from "./views/FormInput";
 
 const Registration = () => {
+  useEffect(()=>{
+    require("../../CSS/StaffRegistration.css")
+  })
+
   const [values, setValues] = useState({
     fname: "",
     lname: "",
@@ -11,7 +14,6 @@ const Registration = () => {
     password: "",
     confirmPassword: "",
   });
-
   const inputs = [
     {
       id: 1,
@@ -70,11 +72,14 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(values);
   };
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+
 
   return (
     <div className="app">
@@ -90,7 +95,7 @@ const Registration = () => {
           />
         ))}
         <div className="btnn">
-          <button>Submit</button>
+          <button onClick={handleSubmit} className="btn_submit">Submit</button>
         </div>
       </form>
     </div>

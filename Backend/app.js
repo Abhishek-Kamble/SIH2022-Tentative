@@ -1,6 +1,4 @@
-const Express = require('./ServiceHost').Express;
-var expressApp = require('./ServiceHost').expressApp;
-
+var expressApp = require('./serviceHost').expressApp;
 const cors = require('cors');
 
 expressApp.use(cors({origin:'*'}));
@@ -39,6 +37,13 @@ expressApp.use('/user',requestRegister);
 
 expressApp.use('/p',Password);
 
-expressApp.listen(8000,function(){
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 8000;
+}
+
+
+expressApp.listen(port,function(){
     console.log("server has started on port 8000");
 })

@@ -1,10 +1,12 @@
 import React , {useState , useEffect} from 'react';
 import { Button ,Card, Grid} from 'semantic-ui-react';
-import "../../CSS/StaffInfo.css";
 import glass from '../../images/glass2.png';
 
 
 export default function StaffInfo() {
+    useEffect(()=>{
+        require("../../CSS/StaffInfo.css")
+      })
     const staffInfo=[
         {
             fname:'Vaishnavi',
@@ -80,12 +82,12 @@ export default function StaffInfo() {
 
 
         return (
-            <div>
+            <div className='staffInfo'>
                  <div className="home">
-                    <input type='text' placeholder='search' autoFocus={true} />
+                    <input className='input_staffInfo' type='text' placeholder='search' autoFocus={true} />
                     <img  className="glass" alt="magnifying glass" src={glass}  />
                 </div>
-                <Grid >
+                <Grid className='grid_staffInfo'>
                     <Grid.Row>
                         <Card.Group className='cardItems' items = {items} />
                     </Grid.Row>

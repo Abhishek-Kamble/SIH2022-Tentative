@@ -1,7 +1,9 @@
-import { useState } from "react";
-import "./FormInput.css";
+import { useEffect, useState } from "react";
 
 const FormInput = (props) => {
+  useEffect(()=>{
+    require("./FormInput.css")
+  })
   const [focused, setFocused] = useState(false);
   const { label, errorMessage, onChange, id, ...inputProps } = props;
 
@@ -13,6 +15,7 @@ const FormInput = (props) => {
     <div className="formInput">
       <label>{label}</label>
       <input
+      className="input_Reg"
         {...inputProps}
         onChange={onChange}
         onBlur={handleFocus}

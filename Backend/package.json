@@ -4,8 +4,11 @@
   "description": "SIH 2022 - Property Tax Management System",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "16.15.0"
   },
   "author": "Data_Conquerors",
   "license": "ISC",
