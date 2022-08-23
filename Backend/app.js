@@ -1,5 +1,4 @@
 var expressApp = require('./serviceHost').expressApp;
-
 const cors = require('cors');
 
 expressApp.use(cors({origin:'*'}));
