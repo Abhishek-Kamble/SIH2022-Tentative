@@ -34,6 +34,7 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/" component={Registration} />
+            <Route exact path="/login" component={Login}/>
 
             {/* Admin Routes */}
             <Route exact path="/adminDashboard" component={LandingPage} />

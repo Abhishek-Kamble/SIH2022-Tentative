@@ -1,33 +1,74 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axiosconfig from "../config";
 import emailIcon from "../images/email.png";
 import passIcon from "../images/password.png";
 import Dropdown from 'react-dropdown';
+import cookie from "react-cookie";
 import 'react-dropdown/style.css';
 
+var emailRegex = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
+
+function isEmailValid(email) {
+  if (!email)
+    return false;
+
+  if (email.length > 254)
+    return false;
+
+  var valid = emailRegex.test(email);
+  if (!valid)
+    return false;
+
+  // Further checking of some things regex can't handle
+  var parts = email.split("@");
+  if (parts[0].length > 64)
+    return false;
+
+  var domainParts = parts[1].split(".");
+  if (domainParts.some(function (part) { return part.length > 63; }))
+    return false;
+
+  return true;
+}
+
 const Login = () => {
-  useEffect(()=>{
+  useEffect(() => {
     require("../CSS/Login.css")
   })
 
   const [data, setData] = useState({
     email: "",
     password: "",
+    id: "5",
   });
 
   const [touched, setTouched] = useState({});
 
   const chaeckData = (obj) => {
-    const { email, password } = obj;
-    const urlApi = `https://lightem.senatorhost.com/login-react/index.php?email=${email.toLowerCase()}&password=${password}`;
-    const api = axios
-      .get(urlApi)
+    const { email, password, id } = obj;
+    if (email.length == 0 || password.length == 0 || !isEmailValid(email)) {
+      notify('Please enter a valid email and password', 'error');
+      return;
+    }
+
+    var link = '/login?id=' + id;
+    const api = axiosconfig
+      .post(link, obj)
       .then((response) => response.data)
-      .then((data) => (data.ok ? notify("You login to your account successfully", "success") : notify("Your password or your email is wrong", "error")));
+      .then(async (data) => {
+        if (data.found == 1 && data.token) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("id", id)
+          notify("You login to your account successfully", "success")
+
+        } else {
+          notify("Your password or your email is wrong", "error")
+        }
+      });
     toast.promise(api, {
       pending: "Loading your data...",
       success: false,
@@ -43,6 +84,9 @@ const Login = () => {
     }
   };
 
+  const changeHandlerOpt = (event) => {
+    setData({ ...data, 'id': (event.value[0] == 'User') ? 5 : 2 })
+  }
   const focusHandler = (event) => {
     setTouched({ ...touched, [event.target.name]: true });
   };
@@ -54,7 +98,7 @@ const Login = () => {
   const options = [
     'Admin', 'User'
   ];
-  const defaultOption=options[1];
+  const defaultOption = options[1];
 
   return (
     <div className="container">
@@ -70,16 +114,16 @@ const Login = () => {
           <br></br>
           <div>
             <input type="password" name="password" value={data.password} placeholder="Password" onChange={changeHandler} onFocus={focusHandler} autoComplete="off" />
-            <img  src={passIcon} alt="" />
+            <img src={passIcon} alt="" />
           </div>
           <br></br>
           <div>
-            <Dropdown className="dropdown" options={options} value={defaultOption} placeholder="Select an option" />
+            <Dropdown className="dropdown" name="role" options={options} value={defaultOption} onChange={changeHandlerOpt} placeholder="Select an option" />
           </div>
         </div>
 
         <div>
-          <button onClick={submitHandler}  className="btn" type="submit">Login</button>
+          <button onClick={submitHandler} className="btn" type="submit">Login</button>
           <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%" }}>
             Don't have a account? <Link to="/signup">Create account</Link>
           </span>
