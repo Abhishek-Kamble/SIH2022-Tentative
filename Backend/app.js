@@ -1,4 +1,3 @@
-const Express = require('./ServiceHost').Express;
 var expressApp = require('./ServiceHost').expressApp;
 
 const cors = require('cors');
