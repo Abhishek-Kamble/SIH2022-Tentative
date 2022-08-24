@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import FormInput from "./views/FormInput";
-import axiosconfig from "../../config";
+import axiosconfig , {setToken} from "../../config";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "../toast";
@@ -105,16 +105,18 @@ const Registration = () => {
 
 
     var link = '/staffregistor';
+    setToken(localStorage.getItem('token'));
     const api = axiosconfig
       .post(link, obj)
       .then((response) => response.data)
       .then(async (data) => {
-        if (data) {
+        console.log(data)
+        if (data.found) {
 
           notify("You have registered successfully", "success")
 
         } else {
-          notify("Plz fill the form again", "error")
+          notify(data.message, "error")
         }
       });
     toast.promise(api, {

@@ -7,37 +7,47 @@ import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
 export default function StaffInfo() {
     const [staffInfo, setStaffInfo] = useState([])
+    const [itemData, setItemData] = useState([])
+    const [loading,setLoading] = useState(false)
     useEffect(() => {
         require("../../CSS/StaffInfo.css")
         setToken(localStorage.getItem('token'));
-        const fetchPost = () => {
-            axiosconfig.get('/staffg?id=2').then((response) => {
-                setStaffInfo(response.data);
-
-            }).catch((err) => {
-                console.log(err);
-            });
-            console.log(staffInfo);
-        };
         fetchPost();
-    },[]);
-  
-    // const handleOnChange =()=>{
+    },[loading]);
 
-    // }
+    const fetchPost = () => {
+        axiosconfig.get('/staffg?id=2').then((response) => {
+            setStaffInfo(response.data.Data);
+            addInfo();
+            setLoading(true);
+        }).catch((err) => {
+            console.log(err);
+        });
+    };
 
-    const items = [];
+    const removeuser =(data)=>{
+        var api = '/staffd/'+data
+        axiosconfig.delete(api).then((response) => {
+            console.log(response)
+            setLoading(false)
+            fetchPost();
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }
+
     const addInfo = () => {
+        const items = [];
         for (let i = 0; i < staffInfo.length; i++) {
-
             items.push({
+                key:i,
                 header: staffInfo[i].fname + " " + staffInfo[i].lname,
-                meta: staffInfo[i].id,
+                meta: staffInfo[i].employee_id,
                 description: <div>
                     <strong>Email: </strong> {staffInfo[i].email}<br />
-                    <strong>Mobile No: </strong> {staffInfo[i].mobile_no}<br />
+                    <strong>Mobile No: </strong> {staffInfo[i].mobile_number}<br />
                     <div style={{ marginTop: '15px' }} >
-                        <Button color={'blue'}>
+                        <Button color={'blue'} onClick={()=>removeuser(staffInfo[i].employee_id)}>
                             Remove
                         </Button>
                     </div>
@@ -45,10 +55,10 @@ export default function StaffInfo() {
                 style: { overflowWrap: 'break-word', padding: '10px' }
             });
         }
+        setItemData(items);
     }
 
-    if (staffInfo.length > 0) {
-        addInfo();
+    if (loading) {
         return (
             <div className='staffInfo'>
                 <div className="home">
@@ -57,7 +67,7 @@ export default function StaffInfo() {
                 </div>
                 <Grid className='grid_staffInfo'>
                     <Grid.Row>
-                        <Card.Group className='cardItems' items={items} />
+                        <Card.Group className='cardItems' items={itemData} />
                     </Grid.Row>
                 </Grid>
             </div>
