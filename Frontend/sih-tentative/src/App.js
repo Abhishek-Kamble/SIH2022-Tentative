@@ -17,7 +17,7 @@ import ViewProperty from "./components/Staff/Dashboard/UpdateRequest"
 function App() {
   return (
     <>
-      <Navbar role='admin'></Navbar>
+      <Navbar ></Navbar>
       <container>
         <div className="content">
           <Switch>

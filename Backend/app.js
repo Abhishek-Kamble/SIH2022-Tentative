@@ -43,5 +43,5 @@ if (port == null || port == "") {
 
 
 expressApp.listen(port,function(){
-    console.log("server has started on port 5000");
+    console.log("server has started on port 8000");
 })
