@@ -35,8 +35,8 @@ module.exports.login = async function (req) {
         bcrypt.compare(req.body.password,GetTERes[0].password).then(async (result) => {
            if(result==true)
            {
-                var Token = await GenerateJWTToken({userid:req.body.email,role:GetTERes[0].role,id:(GetTERes[0].employee_id || GetTERes[0].user_id)});
-                resolve({found:1,message:"Successfully Logged in!",token:Token});
+                var Token = await GenerateJWTToken({usermail:req.body.email,role:GetTERes[0].role,userid:(GetTERes[0].employee_id || GetTERes[0].user_id)});
+                resolve({found:1,message:"Successfully Logged in!",token:Token,role:GetTERes[0].role});
            }
            else{
                 resolve({found: 0, message:"Invalid Password"});
