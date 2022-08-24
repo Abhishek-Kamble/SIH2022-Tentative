@@ -1,12 +1,69 @@
 import React, { useEffect } from 'react'
-import { Tab, Card, Button,Message } from 'semantic-ui-react'
+import { Tab, Card, Button, Message } from 'semantic-ui-react'
+import { ToastContainer, toast } from "react-toastify";
+import { notify } from "../toast";
 
 
 
 const Property = () => {
+
     useEffect(() => {
         require("../../CSS/Property.css")
-    })
+        const script = document.createElement('script')
+        script.src = 'https://checkout.razorpay.com/v1/checkout.js'
+        script.async = true
+        script.id = 'razorpay-script'
+        document.head.appendChild(script)
+        return () => {
+            const script = document.getElementById('razorpay-script')
+            const rContainer = document.querySelector('.razorpay-container')
+            console.log('script2', rContainer)
+            rContainer && rContainer.remove()
+            script && script.remove()
+        };
+    }, []);
+
+    //razorpay integration
+    const confirmPayment = () => {
+
+    }
+    const ApiForRazorpay = async () => {
+        displayRazorpay();
+    }
+
+    const displayRazorpay = async () => {
+        console.log(process.env.REACT_APP_API_KEY_RAZORPAY);
+        const options = {
+            key: "rzp_test_av6t1hoxffSiUW",
+            currency: "INR",
+            amount: 1 * 100,
+            name: "EGov",
+            image: "https://brandeps.com/logo-download/E/EGov-logo-vector-01.svg",
+
+            "handler": function (response) {
+                notify("Payment Successfull","success");
+                confirmPayment();
+
+            },
+            "prefill": {
+                name: "EGov"
+            }
+        };
+        const paymentObject = new window.Razorpay(options)
+        paymentObject.open()
+        paymentObject.on('payment.failed', function (response) {
+            notify(response.error.code);
+            notify(response.error.description);
+            notify(response.error.source);
+            notify(response.error.step);
+            notify(response.error.reason);
+            notify(response.error.metadata.order_id);
+            notify(response.error.metadata.payment_id);
+        });
+
+
+
+    }
     const updateProperty = () => {
 
     }
@@ -29,7 +86,7 @@ const Property = () => {
                             <div style={{ padding: '20px' }}>
                                 <h3 style={{ display: 'inline-block' }}>1235df54hd</h3>
                                 <Button style={{ width: '8%', display: 'inline-block', backgroundColor: '#2218A7', color: 'white' }} floated='right'>Bill</Button>
-                                <Button style={{ width: '8%', display: 'inline-block', backgroundColor: '#2218A7', color: 'white' }} floated='right'>Pay</Button>
+                                <Button onClick={ApiForRazorpay} style={{ width: '8%', display: 'inline-block', backgroundColor: '#2218A7', color: 'white' }} floated='right'>Pay</Button>
                             </div>
                         </Card>
                         <Card fluid color='blue' header='Option 2' />
@@ -56,7 +113,7 @@ const Property = () => {
         console.log("In handle");
         window.location.href = "http://localhost:3000/";
     }
-    if (localStorage.getItem('role') == '5') {
+    if (localStorage.getItem('role') == null) {
     return (
         <>
             <div className='add_btnn'>
@@ -65,6 +122,7 @@ const Property = () => {
             <div className='tab-bar'>
                 <Tab menu={{ vertical: true, tabular: true }} panes={panes} />
             </div>
+            <ToastContainer />
         </>
         )
     }

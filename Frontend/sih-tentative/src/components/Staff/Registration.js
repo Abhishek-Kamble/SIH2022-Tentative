@@ -115,6 +115,7 @@ const Registration = () => {
         if (data.found) {
 
           notify("You have registered successfully", "success")
+          window.location.href = "http://localhost:3000/staffInfo";
 
         } else {
           notify(data.message, "error")

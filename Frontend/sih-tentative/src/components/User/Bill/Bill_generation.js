@@ -2,22 +2,28 @@ import React, { Component, useEffect } from 'react'
 import { Card } from 'react-bootstrap'
 
 const BillGeneration = () => {
+
   useEffect(() => {
     require("../../../CSS/Bill_generation.css")
-  })
+  }, []);
+
+
+
+
+
   return (
     <div>
       <Card>
         <Card.Body>
-          <div className="invoice-box" style={{padding :'10px'}}>
-            <table style={{width:'100%'}} className="main_table" cellpadding="0" cellspacing="0">
+          <div className="invoice-box" style={{ padding: '10px' }}>
+            <table style={{ width: '100%' }} className="main_table" cellpadding="0" cellspacing="0">
               <tr className="top_rw">
-                <td colspan="6" style={{padding:'10px',textAlign:'center'}}>
+                <td colspan="6" style={{ padding: '10px', textAlign: 'center' }}>
                   <h2 style={{ marginBottom: '0px' }}> Pune Municipalty </h2>
                   <h3 style={{}}> Property Tax Bill </h3>
                 </td>
               </tr>
-      
+
               <tr className="top">
                 <td colspan="3">
                   <table>
@@ -63,7 +69,7 @@ const BillGeneration = () => {
               <td colspan="3">
                 <table cellspacing="0px" cellpadding="2px">
                   <tr className="heading">
-                    <td colspan="3" style={{ width: '60%',textAlign:'center' }}> Date (From -- To) </td>
+                    <td colspan="3" style={{ width: '60%', textAlign: 'center' }}> Date (From -- To) </td>
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}>
                       Residential MulyaPatra
                     </td>
@@ -76,7 +82,7 @@ const BillGeneration = () => {
                   </tr>
                   <tr className="heading">
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}> Residential taxes (General)</td>
-                    <td  style={{ width: '30%', textAlign: 'center' }}>
+                    <td style={{ width: '30%', textAlign: 'center' }}>
                       Rate
                     </td>
                     <td colspan="2" style={{ width: '30%', textAlign: 'center' }}>
@@ -107,7 +113,7 @@ const BillGeneration = () => {
                       Rate
                     </td>
                     <td colspan="3" style={{ width: '30%', textAlign: 'center' }}>
-                     43332
+                      43332
                     </td>
                   </tr>
                   <tr className="item">
@@ -160,11 +166,11 @@ const BillGeneration = () => {
                     <td clospan="2" style={{ width: '40%', textAlign: 'center' }}>
                       Rate
                     </td>
-                    
+
                   </tr>
                 </table>
               </td>
-              
+
               <tr className="total">
                 <td colspan="3" align="right"> <b> Total Amount in Words : </b> <b> Three Hundred Eighty Rupees Only </b> </td>
               </tr>

@@ -16,6 +16,48 @@ const Bill = () => {
         console.log("In handle");
         window.location.href = "http://localhost:3000/";
     }
+
+    //razorpay integration
+    const confirmPayment = () => {
+
+    }
+    const ApiForRazorpay = async () => {
+        displayRazorpay();
+    }
+
+    const displayRazorpay = async () => {
+        console.log(process.env.REACT_APP_API_KEY_RAZORPAY);
+        const options = {
+            key: process.env.REACT_APP_API_KEY_RAZORPAY,
+            currency: "INR",
+            amount: 1 * 100,
+            name: "Egov",
+            image: "https://live-server-818.wati.io/data/logo/theblingbag.myshopify.com.png?24655",
+
+            "handler": function (response) {
+                alert("pament successfull");
+                confirmPayment();
+
+            },
+            "prefill": {
+                name: "EGov"
+            }
+        };
+        const paymentObject = new window.Razorpay(options)
+        paymentObject.open()
+        paymentObject.on('payment.failed', function (response) {
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+        });
+
+
+
+    }
     if (localStorage.getItem('role') == '5') {
         return (
             <div>
