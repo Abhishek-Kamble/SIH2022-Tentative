@@ -4,19 +4,19 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 import { Link } from "react-router-dom";
 
-const Navbar = (props) => {
+const Navbar = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
   const [credData,setCredData] = useState({});
   useEffect(() => {
     var token = localStorage.getItem('token');
-    var id = localStorage.getItem('id');
-    if(token && id)
-      setCredData({token: token, id: id});
+    var role = localStorage.getItem('role');
+    if(token && role)
+      setCredData({token: token, role: role});
   }, [])
 
-  console.log(props);
+  console.log(credData.role);
   
-  if (props.role === 'admin') {
+  if (credData.role === '1') {
     return (
       <>
         <nav className="main-nav">
@@ -64,7 +64,7 @@ const Navbar = (props) => {
       </>
     );
   }
-  else if (props.role === 'user') {
+  else if (credData.role === '5') {
     return (
       <>
         <nav className="main-nav">
@@ -108,7 +108,7 @@ const Navbar = (props) => {
       </>
     );
   }
-  else if (props.role === 'staff') {
+  else if (credData.role === '2') {
     return (
       <>
         <nav className="main-nav">

@@ -51,3 +51,6 @@ h1 {
       appearance: none;
     }
   }
+  .loader_staffInfo{
+    min-height: 85vh;
+  }
