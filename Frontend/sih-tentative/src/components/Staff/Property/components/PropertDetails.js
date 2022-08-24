@@ -207,7 +207,7 @@ const PropertyDetails = ({ nextStep, handleChange, values }) => {
         <h2>You are not authorised as Staff. Please login again!</h2>
         <div>
           <Button color='primary' onClick={handleGoHome}>Go to Home</Button>
-        </div>
+          </div>
       </Message>
     )
   }

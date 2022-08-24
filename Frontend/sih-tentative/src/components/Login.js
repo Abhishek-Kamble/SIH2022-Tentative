@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
 import { Link } from "react-router-dom";
-import axiosconfig from "../config";
+import axiosconfig,{setToken} from "../config";
 import emailIcon from "../images/email.png";
 import passIcon from "../images/password.png";
 import Dropdown from 'react-dropdown';
@@ -62,6 +62,7 @@ const Login = () => {
         if (data.found == 1 && data.token) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("role", data.role)
+          setToken(localStorage.getItem('token'));
           notify("You login to your account successfully", "success")
           console.log(data.role);
           if (data.role == '1')

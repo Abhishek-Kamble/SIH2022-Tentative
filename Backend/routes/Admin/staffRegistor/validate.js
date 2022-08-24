@@ -78,7 +78,7 @@ var ValidateDatabase = async function(req) {
                 throw "Email and Mobile number are already in use";
             }
 
-            resolve();
+            resolve("ok");
 
         }catch(err){
             reject(err);

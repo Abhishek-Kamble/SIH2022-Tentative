@@ -36,11 +36,11 @@ const Navbar = () => {
               <li>
                 <Link to="/adminDashboard">Home</Link>
               </li>
-              <div class="dropdown-main">
-                <button class="menu-btn">Staff </button>
-                <div class="menu-content">
-                  <Link class="links-hidden" to="/staffRegistration">Registration</Link>
-                  <Link class="links-hidden" to="/staffInfo">Information</Link>
+              <div className="dropdown-main">
+                <button className="menu-btn">Staff </button>
+                <div className="menu-content">
+                  <Link className="links-hidden" to="/staffRegistration">Registration</Link>
+                  <Link className="links-hidden" to="/staffInfo">Information</Link>
                 </div>
               </div>
               <li>

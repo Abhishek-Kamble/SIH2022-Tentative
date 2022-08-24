@@ -6,41 +6,50 @@ import { Dimmer, Loader, Image, Segment, Message } from 'semantic-ui-react'
 
 
 export default function StaffInfo() {
-    const [staffInfo, setStaffInfo] = useState([]);
-    const [role, setRole] = useState([]);
+    const [staffInfo, setStaffInfo] = useState([])
+    const [itemData, setItemData] = useState([])
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
         require("../../CSS/StaffInfo.css")
         if (localStorage.getItem('role') == '1') {
             setToken(localStorage.getItem('token'));
-            const fetchPost = () => {
-                axiosconfig.get('/staffg?id=2').then((response) => {
-                    setStaffInfo(response.data);
-
-                }).catch((err) => {
-                    console.log(err);
-                });
-                console.log(staffInfo);
-            };
             fetchPost();
         }
-    }, []);
+    }, [loading]);
 
-    // const handleOnChange =()=>{
+    const fetchPost = () => {
+        axiosconfig.get('/staffg?id=2').then((response) => {
+            setStaffInfo(response.data.Data);
+            addInfo();
+            setLoading(true);
+        }).catch((err) => {
+            console.log(err);
+        });
+    };
 
-    // }
+    const removeuser = (data) => {
+        var api = '/staffd/' + data
+        axiosconfig.delete(api).then((response) => {
+            console.log(response)
+            setLoading(false)
+            fetchPost();
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
 
-    const items = [];
     const addInfo = () => {
+        const items = [];
         for (let i = 0; i < staffInfo.length; i++) {
-
             items.push({
+                key: i,
                 header: staffInfo[i].fname + " " + staffInfo[i].lname,
-                meta: staffInfo[i].id,
+                meta: staffInfo[i].employee_id,
                 description: <div>
                     <strong>Email: </strong> {staffInfo[i].email}<br />
-                    <strong>Mobile No: </strong> {staffInfo[i].mobile_no}<br />
+                    <strong>Mobile No: </strong> {staffInfo[i].mobile_number}<br />
                     <div style={{ marginTop: '15px' }} >
-                        <Button color={'blue'}>
+                        <Button color={'blue'} onClick={() => removeuser(staffInfo[i].employee_id)}>
                             Remove
                         </Button>
                     </div>
@@ -48,6 +57,7 @@ export default function StaffInfo() {
                 style: { overflowWrap: 'break-word', padding: '10px' }
             });
         }
+        setItemData(items);
     }
     const handleGoHome = () => {
         console.log("In handle");
@@ -55,7 +65,7 @@ export default function StaffInfo() {
     }
     if (localStorage.getItem('role') === '1') {
         console.log("here role==" + localStorage.getItem('role'))
-        if (staffInfo.length > 0) {
+        if (loading) {
             addInfo();
             return (
                 <div className='staffInfo'>
@@ -86,7 +96,7 @@ export default function StaffInfo() {
     else {
         console.log('In else====' + localStorage.getItem('role'));
         return (
-            <Message floating style={{padding:'60px'}}>
+            <Message floating style={{ padding: '60px' }}>
                 <h2>You are not authorised as Admin. Please login again!</h2>
                 <div>
                     <Button color='primary' onClick={handleGoHome}>Go to Home</Button>
@@ -94,6 +104,8 @@ export default function StaffInfo() {
             </Message>
         )
     }
+
+
 
 }
 

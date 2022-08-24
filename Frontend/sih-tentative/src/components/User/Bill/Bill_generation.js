@@ -9,16 +9,16 @@ const BillGeneration = () => {
     <div>
       <Card>
         <Card.Body>
-          <div class="invoice-box" style={{padding :'10px'}}>
-            <table style={{width:'100%'}} class="main_table" cellpadding="0" cellspacing="0">
-              <tr class="top_rw">
+          <div className="invoice-box" style={{padding :'10px'}}>
+            <table style={{width:'100%'}} className="main_table" cellpadding="0" cellspacing="0">
+              <tr className="top_rw">
                 <td colspan="6" style={{padding:'10px',textAlign:'center'}}>
                   <h2 style={{ marginBottom: '0px' }}> Pune Municipalty </h2>
                   <h3 style={{}}> Property Tax Bill </h3>
                 </td>
               </tr>
       
-              <tr class="top">
+              <tr className="top">
                 <td colspan="3">
                   <table>
                     <td colspan="2">
@@ -31,7 +31,7 @@ const BillGeneration = () => {
                 </td>
               </tr>
 
-              <tr class="top">
+              <tr className="top">
                 <td colspan="3">
                   <table>
                     <td colspan="2">
@@ -43,7 +43,7 @@ const BillGeneration = () => {
                   </table>
                 </td>
               </tr>
-              <tr class="information">
+              <tr className="information">
                 <td colspan="3">
                   <table>
                     <tr>
@@ -62,19 +62,19 @@ const BillGeneration = () => {
               </tr>
               <td colspan="3">
                 <table cellspacing="0px" cellpadding="2px">
-                  <tr class="heading">
+                  <tr className="heading">
                     <td colspan="3" style={{ width: '60%',textAlign:'center' }}> Date (From -- To) </td>
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}>
                       Residential MulyaPatra
                     </td>
                   </tr>
-                  <tr class="item">
+                  <tr className="item">
                     <td colspan="3" style={{ width: '60%', textAlign: 'center' }}> 10 DEC 2022  to 12 march 2023 </td>
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}>
                       2468237892
                     </td>
                   </tr>
-                  <tr class="heading">
+                  <tr className="heading">
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}> Residential taxes (General)</td>
                     <td  style={{ width: '30%', textAlign: 'center' }}>
                       Rate
@@ -83,7 +83,7 @@ const BillGeneration = () => {
                       Resident rate
                     </td>
                   </tr>
-                  <tr class="item">
+                  <tr className="item">
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}> Water benefit Tax</td>
                     <td style={{ width: '30%', textAlign: 'center' }}>
                       Rate
@@ -92,7 +92,7 @@ const BillGeneration = () => {
                       232423
                     </td>
                   </tr>
-                  <tr class="item">
+                  <tr className="item">
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}> Seweray cess</td>
                     <td style={{ width: '30%', textAlign: 'center' }}>
                       Rate
@@ -101,7 +101,7 @@ const BillGeneration = () => {
                       343232
                     </td>
                   </tr>
-                  <tr class="item">
+                  <tr className="item">
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}> Seweray Benefit cess</td>
                     <td style={{ width: '30%', textAlign: 'center' }}>
                       Rate
@@ -110,7 +110,7 @@ const BillGeneration = () => {
                      43332
                     </td>
                   </tr>
-                  <tr class="item">
+                  <tr className="item">
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}> Education cess</td>
                     <td style={{ width: '30%', textAlign: 'center' }}>
                       Rate
@@ -119,7 +119,7 @@ const BillGeneration = () => {
                       133321
                     </td>
                   </tr>
-                  <tr class="item">
+                  <tr className="item">
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}>Tree cess</td>
                     <td style={{ width: '30%', textAlign: 'center' }}>
                       Rate
@@ -128,7 +128,7 @@ const BillGeneration = () => {
                       232321
                     </td>
                   </tr>
-                  <tr class="item">
+                  <tr className="item">
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}> Street tax</td>
                     <td style={{ width: '30%', textAlign: 'center' }}>
                       Rate
@@ -137,7 +137,7 @@ const BillGeneration = () => {
                       432432
                     </td>
                   </tr>
-                  <tr class="item">
+                  <tr className="item">
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}> Employment Gaurantee Tax</td>
                     <td style={{ width: '30%', textAlign: 'center' }}>
                       Rate
@@ -146,7 +146,7 @@ const BillGeneration = () => {
                       48324
                     </td>
                   </tr>
-                  <tr class="item">
+                  <tr className="item">
                     <td colspan="3" style={{ width: '40%', textAlign: 'center' }}>Fire tax</td>
                     <td style={{ width: '30%', textAlign: 'center' }}>
                       Rate
@@ -155,7 +155,7 @@ const BillGeneration = () => {
                       6543672
                     </td>
                   </tr>
-                  <tr class="item">
+                  <tr className="item">
                     <td colspan="4" style={{ width: '60%', textAlign: 'center' }}>Total paid amount</td>
                     <td clospan="2" style={{ width: '40%', textAlign: 'center' }}>
                       Rate
@@ -165,14 +165,14 @@ const BillGeneration = () => {
                 </table>
               </td>
               
-              <tr class="total">
+              <tr className="total">
                 <td colspan="3" align="right"> <b> Total Amount in Words : </b> <b> Three Hundred Eighty Rupees Only </b> </td>
               </tr>
               <br></br>
               <hr></hr>
               <br></br>
-              <table class="item">
-                <tr class="item">
+              <table className="item">
+                <tr className="item">
                   <td colspan="4" style={{ width: '50%', textAlign: 'center' }}>Pay This Amount On or Before</td>
                   <td style={{ width: '30%', textAlign: 'right' }}>
                     15-Dec-2023
@@ -181,7 +181,7 @@ const BillGeneration = () => {
                     32652262
                   </td>
                 </tr>
-                <tr class="item">
+                <tr className="item">
                   <td colspan="4" style={{ width: '50%', textAlign: 'center' }}></td>
                   <td style={{ width: '30%', textAlign: 'right' }}>
                     15-Dec-2023
@@ -190,7 +190,7 @@ const BillGeneration = () => {
                     32652262
                   </td>
                 </tr>
-                <tr class="item">
+                <tr className="item">
                   <td colspan="4" style={{ width: '50%', textAlign: 'center' }}></td>
                   <td style={{ width: '30%', textAlign: 'right' }}>
                     15-Dec-2023
