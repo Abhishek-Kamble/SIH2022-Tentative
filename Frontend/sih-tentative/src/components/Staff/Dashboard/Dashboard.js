@@ -53,7 +53,7 @@ export default function Dashboard() {
         console.log("In handle");
         window.location.href = "http://localhost:3000/";
     }
-    if (localStorage.getItem('role') == '1') {
+    if (localStorage.getItem('role') == '2') {
         return (
             <div className='staffInfo'>
                 <h1 style={{ marginTop: '4%', textDecorationLine: 'underline' }}>Property Update Requests</h1>

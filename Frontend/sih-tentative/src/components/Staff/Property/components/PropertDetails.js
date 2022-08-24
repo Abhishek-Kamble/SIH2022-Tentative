@@ -15,7 +15,7 @@ const PropertyDetails = ({ nextStep, handleChange, values }) => {
     console.log("In handle");
     window.location.href = "http://localhost:3000/";
   }
-  if (localStorage.getItem('role') == '1') {
+  if (localStorage.getItem('role') == '2') {
     return (
       <div className="pform">
         <Container component="main" maxWidth="xs">

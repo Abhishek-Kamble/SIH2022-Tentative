@@ -24,7 +24,7 @@ export default function UpdateRequest() {
     console.log("In handle");
     window.location.href = "http://localhost:3000/";
   }
-  if (localStorage.getItem('role') == '1') {
+  if (localStorage.getItem('role') == '2') {
     return (
       <div className='main_card'>
         <div className='card_request'>
