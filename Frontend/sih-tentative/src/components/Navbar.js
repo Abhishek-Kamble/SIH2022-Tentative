@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../CSS/Navbar.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
-  console.log(props);
   const [showMediaIcons, setShowMediaIcons] = useState(false);
+  const [credData,setCredData] = useState({});
+  useEffect(() => {
+    var token = localStorage.getItem('token');
+    var id = localStorage.getItem('id');
+    if(token && id)
+      setCredData({token: token, id: id});
+  }, [])
+
+  console.log(props);
+  
   if (props.role === 'admin') {
     return (
       <>
