@@ -1,0 +1,19 @@
+.card_request {
+    max-width: 600px;
+    width: 600px;
+    border: 1px solid black;
+    box-shadow: 3px 3px 3px 3px #888888;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.list{
+    word-wrap: break-word;
+}
+
+.main_card {
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+}
