@@ -3,6 +3,7 @@ import PropertyDetails from './PropertDetails'
 import UploadDetails from './UploadDetails'
 import Confirmation from './Confirmation'
 import Success from './Success'
+import axiosconfig , {setToken} from "../../../../config";
 
 export default class Controller extends Component {
 
@@ -21,6 +22,17 @@ export default class Controller extends Component {
     aff_id_bd_name:'',
     app_id_bd:'',
     app_id_bd_name:'',
+    zoneArray: [],
+    isLoading: false,
+  }
+
+  componentDidMount(){
+    axiosconfig.get('/zones').then((response)=>{
+      this.setState({zoneArray : response.data.data})
+      this.setState({isLoading :true})
+    }).catch((error)=>{
+      console.log(error)
+    })
   }
 
   // go back to previous step
@@ -49,12 +61,14 @@ export default class Controller extends Component {
     
     
   }
-
+  
   render() {
-    const { step } = this.state;
-    const { property_address,areacovered,yearconstruction, zone_id,user_id,use,constructortype,occupancytype,type,aff_id_bd_name,app_id_bd_name,aff_id_bd,app_id_bd } = this.state;
-    const values = { property_address,areacovered,yearconstruction, zone_id,user_id,use,constructortype,occupancytype,type,aff_id_bd_name,app_id_bd_name,aff_id_bd,app_id_bd }
-    
+    const { step,isLoading } = this.state;
+    if(!isLoading){
+      return <div >Loding........</div>
+    }
+    const { property_address,areacovered,yearconstruction, zone_id,user_id,use,constructortype,occupancytype,type,aff_id_bd_name,app_id_bd_name,aff_id_bd,app_id_bd , zoneArray } = this.state;
+    const values = { property_address,areacovered,yearconstruction, zone_id,user_id,use,constructortype,occupancytype,type,aff_id_bd_name,app_id_bd_name,aff_id_bd,app_id_bd ,zoneArray }
     switch(step) {
       case 1: 
         return (

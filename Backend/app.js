@@ -20,6 +20,7 @@ var UserRegister = require('./routes/User/Register/controller');
 var PropertyRegistration = require('./routes/Property/controller');
 const  zoneRegister = require('./routes/Admin/zoneRegister/zoneController');
 const Password = require('./routes/password/controller');
+const zones = require('./routes/User/zones/controller')
 // Routes
 expressApp.use('/login',Login);
 
@@ -32,11 +33,12 @@ expressApp.use('/staffg',AuthorizationRoute.validateToken,StaffData)
 expressApp.use('/Property',AuthorizationRoute.validateToken,PropertyRegistration);
 expressApp.use('/zoneRegister',AuthorizationRoute.validateToken,zoneRegister)
 expressApp.use('/p',Password);
+expressApp.use('/zones',zones);
 
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-    port = 5000;
+    port = 8000;
 }
 
 
