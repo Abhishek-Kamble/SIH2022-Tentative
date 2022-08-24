@@ -13,6 +13,7 @@
 .replit
 .prettierrc
 _config.yml
+sih2022.pem
 
 # testing
 /coverage

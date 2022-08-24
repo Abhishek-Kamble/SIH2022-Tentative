@@ -36,10 +36,10 @@ expressApp.use('/p',Password);
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-    port = 8000;
+    port = 5000;
 }
 
 
 expressApp.listen(port,function(){
-    console.log("server has started on port 8000");
+    console.log("server has started on port 5000");
 })
