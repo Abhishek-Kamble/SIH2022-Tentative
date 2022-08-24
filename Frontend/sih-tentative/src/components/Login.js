@@ -7,7 +7,6 @@ import axiosconfig from "../config";
 import emailIcon from "../images/email.png";
 import passIcon from "../images/password.png";
 import Dropdown from 'react-dropdown';
-import cookie from "react-cookie";
 import 'react-dropdown/style.css';
 
 var emailRegex = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;

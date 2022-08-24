@@ -24,11 +24,12 @@ const Password = require('./routes/password/controller');
 expressApp.use('/login',Login);
 
 // Middleware API
+//AuthorizationRoute.validateToken
 expressApp.use('/UserRegister',UserRegister);
 expressApp.use('/staffregistor',AuthorizationRoute.validateToken,StaffRegistor);
 expressApp.use('/verification',Verification);
 expressApp.use('/staffd',AuthorizationRoute.validateToken,StaffDelete)
-expressApp.use('/staffg',AuthorizationRoute.validateToken,StaffData)
+expressApp.use('/staffg',StaffData)
 expressApp.use('/Property',AuthorizationRoute.validateToken,PropertyRegistration);
 expressApp.use('/zoneRegister',AuthorizationRoute.validateToken,zoneRegister)
 expressApp.use('/p',Password);
@@ -36,10 +37,10 @@ expressApp.use('/p',Password);
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-    port = 5000;
+    port = 8000;
 }
 
 
 expressApp.listen(port,function(){
-    console.log("server has started on port 5000");
+    console.log("server has started on port 8000");
 })

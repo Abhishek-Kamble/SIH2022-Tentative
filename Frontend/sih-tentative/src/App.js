@@ -12,9 +12,7 @@ import Bill from "./components/User/Bill/Bill";
 import PRegistration from "./components/Staff/Property/PRegistration";
 import UProperty from "./components/Staff/Property/UProperty"
 import Logout from "./components/Logout";
-import PRegistration from "./components/Staff/Property/Registration";
-import ViewProperty from "./components/Staff/Dashboard/UpdateRequest"
-
+import ViewProperty from "./components/Staff/Dashboard/UpdateRequest";
 function App() {
   return (
     <>
