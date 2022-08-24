@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-
 const sequelize = require('../serviceHost').sequelize
 
 const zones = sequelize.define(

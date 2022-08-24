@@ -117,16 +117,13 @@ const Navbar = (props) => {
             }>
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/staffDashboard">Home</Link>
               </li>
               <li>
-                <Link to="/about">about</Link>
+                <Link to="/propertyRegistration">pRegister</Link>
               </li>
               <li>
-                <Link to="/Register">Register</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
+                <Link to="/logout">Logout</Link>
               </li>
             </ul>
           </div>
