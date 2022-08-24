@@ -61,7 +61,7 @@ const Login = () => {
       .then(async (data) => {
         if (data.found == 1 && data.token) {
           localStorage.setItem("token", data.token);
-          localStorage.setItem("id", id)
+          localStorage.setItem("role", data.role)
           notify("You login to your account successfully", "success")
 
         } else {
