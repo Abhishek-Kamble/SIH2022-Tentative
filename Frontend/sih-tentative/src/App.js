@@ -21,7 +21,7 @@ function App() {
       <container>
         <div className="content">
           <Switch>
-            <Route exact path="/" component={Registration} />
+            <Route exact path="/" component={LandingPage} />
             <Route exact path="/login" component={Login} />
 
             {/* Admin Routes */}

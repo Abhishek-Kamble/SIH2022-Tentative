@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { Button, Card, Grid } from 'semantic-ui-react';
 import glass from '../../images/glass2.png';
 import axiosconfig, { setToken } from "../../config";
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+import { Dimmer, Loader, Image, Segment, Message } from 'semantic-ui-react'
 
 
 export default function StaffInfo() {
+
     const [staffInfo, setStaffInfo] = useState([])
     const [itemData, setItemData] = useState([])
     const [loading,setLoading] = useState(false)
     useEffect(() => {
         require("../../CSS/StaffInfo.css")
-        setToken(localStorage.getItem('token'));
-        fetchPost();
+        if (localStorage.getItem('role') == '1') {
+            setToken(localStorage.getItem('token'));
+            fetchPost();
+        }
     },[loading]);
 
     const fetchPost = () => {
@@ -57,8 +60,13 @@ export default function StaffInfo() {
         }
         setItemData(items);
     }
+    const handleGoHome = () => {
+        console.log("In handle");
+        window.location.href = "http://localhost:3000/";
+    }
+    
 
-    if (loading) {
+    if (loading && localStorage.getItem('role') === '1') {
         return (
             <div className='staffInfo'>
                 <div className="home">
@@ -73,18 +81,17 @@ export default function StaffInfo() {
             </div>
         )
     }
-    else
-    {
+    else {
+        console.log('In else====' + localStorage.getItem('role'));
         return (
-            <Segment className='loader_staffInfo'>
-                <Dimmer active inverted>
-                    <Loader size='large'>Loading</Loader>
-                </Dimmer>
-
-                <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
-            </Segment>
+            <Message floating style={{ padding: '60px' }}>
+                <h2>You are not authorised as Admin. Please login again!</h2>
+                <div>
+                    <Button color='primary' onClick={handleGoHome}>Go to Home</Button>
+                </div>
+            </Message>
         )
-        }
+    }
 
 }
 

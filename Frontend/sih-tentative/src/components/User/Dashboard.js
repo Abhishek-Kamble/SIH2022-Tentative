@@ -1,7 +1,7 @@
 import { Carousel } from 'react-bootstrap';
 import { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card,Image ,Tab, Form, Button } from 'semantic-ui-react';
+import { Card,Image ,Tab, Form, Button,Message } from 'semantic-ui-react';
 import userProfile from '../../images/user.png'
 
 
@@ -63,9 +63,14 @@ const UserDashboard =()=>{
             { menuItem: 'Grivience', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
           ]
 
-        return(
-            <div  className="slide-container">
-                <Carousel  fade={true} pause={false}>
+    const handleGoHome = () => {
+        console.log("In handle");
+        window.location.href = "http://localhost:3000/";
+    }
+    if (localStorage.getItem('role') == '5') {
+        return (
+            <div className="slide-container">
+                <Carousel fade={true} pause={false}>
                     {/* <Carousel.Item interval={2000}>
                         <img
                         style={{height:"500px",padding:"5px"}}
@@ -76,10 +81,10 @@ const UserDashboard =()=>{
                     </Carousel.Item> */}
                     <Carousel.Item interval={2000}>
                         <img
-                        className="d-block w-100"
-                        style={{height:"450px",padding:"10px"}}
-                        src="https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80"
-                        alt="Third slide"
+                            className="d-block w-100"
+                            style={{ height: "450px", padding: "10px" }}
+                            src="https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80"
+                            alt="Third slide"
                         />
                     </Carousel.Item>
                 </Carousel>
@@ -88,6 +93,17 @@ const UserDashboard =()=>{
                 </div>
             </div>
         )
+    }
+    else {
+        return (
+            <Message floating style={{ padding: '60px' }}>
+                <h2>You are not authorised User. Please login again!</h2>
+                <div>
+                    <Button color='primary' onClick={handleGoHome}>Go to Home</Button>
+                </div>
+            </Message>
+        )
+    }
 
 
 }
