@@ -124,7 +124,7 @@ const PropertyDetails = ({ nextStep, handleChange, values }) => {
                       onChange={handleChange('zone_id')}
                       fullWidth
                     >
-                      <MenuItem value={1}>Cat 1</MenuItem>
+                      <MenuItem value={23}>Cat 1</MenuItem>
                     </Select>
                   </FormControl>
                 </Box>

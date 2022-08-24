@@ -1,5 +1,9 @@
 import React from 'react'
 import { Container, Grid, List, ListItem, ListItemText, Button } from '@material-ui/core'
+import axiosconfig , {setToken} from "../../../../config";
+import { notify } from "../../../toast";
+import { ToastContainer, toast } from "react-toastify";
+
 
 
 function validate(value) {
@@ -39,13 +43,22 @@ const PType = [
 
 const Confirmation = ({ prevStep, nextStep, values }) => {
   const { property_address,areacovered,yearconstruction, zone_id,user_id,use,constructortype,occupancytype,type,aff_id_bd_name,aff_id_bd,app_id_bd_name,app_id_bd } = values
-  const Continue = e => {
+  const Continue = async (e) => {
     e.preventDefault();
     if(validate(values)){
-      
-      nextStep();
+      setToken(localStorage.getItem('token'));
+      axiosconfig.post('/Property/register',values).then((response) => {
+        console.log(response);
+        if(response.data.done){
+          nextStep();
+        }else {
+          notify(response.data.message,'error');
+        }
+      }).catch((error) => {
+        notify('Something is wrong with the registration Please try again','error');
+      })
     } else {
-      alert("All Field are required")
+      notify('All Field are required', 'error');
     }
     
   }
@@ -119,6 +132,7 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
         </Grid>
       </div>
     </Container>
+    <ToastContainer />
     </div>
   )
 }
