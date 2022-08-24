@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import FormInput from "./views/FormInput";
 import axiosconfig from "../../config";
+import { Message,Button } from "semantic-ui-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "../toast";
@@ -132,28 +133,43 @@ const Registration = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const handleGoHome = () => {
+    console.log("In handle");
+    window.location.href = "http://localhost:3000/";
+  }
 
-
-  return (
-    <div className="app">
-      <form onSubmit={handleSubmit}>
-        <h1>Staff Registration</h1>
-        <br></br><br></br>
-        {inputs.map((input) => (
-          <FormInput
-            key={input.id}
-            {...input}
-            value={values[input.name]}
-            onChange={onChange}
-          />
-        ))}
-        <div className="btnn">
-          <button onClick={handleSubmit} className="btn_submit">Submit</button>
+  if (localStorage.getItem('role') == '1') {
+    return (
+      <div className="app">
+        <form onSubmit={handleSubmit}>
+          <h1>Staff Registration</h1>
+          <br></br><br></br>
+          {inputs.map((input) => (
+            <FormInput
+              key={input.id}
+              {...input}
+              value={values[input.name]}
+              onChange={onChange}
+            />
+          ))}
+          <div className="btnn">
+            <button onClick={handleSubmit} className="btn_submit">Submit</button>
+          </div>
+        </form>
+        <ToastContainer />
+      </div>
+    );
+  }
+  else {
+    return (
+      <Message floating style={{ padding: '60px' }}>
+        <h2>You are not authorised as Admin. Please login again!</h2>
+        <div>
+          <Button color='primary' onClick={handleGoHome}>Go to Home</Button>
         </div>
-      </form>
-      <ToastContainer />
-    </div>
-  );
+      </Message>
+    )
+  }
 };
 
 export default Registration;

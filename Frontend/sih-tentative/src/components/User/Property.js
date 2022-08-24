@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Tab, Card, Button } from 'semantic-ui-react'
+import { Tab, Card, Button,Message } from 'semantic-ui-react'
 
 
 
@@ -52,7 +52,11 @@ const Property = () => {
         }
         panes.push(obj);
     }
-
+    const handleGoHome = () => {
+        console.log("In handle");
+        window.location.href = "http://localhost:3000/";
+    }
+    if (localStorage.getItem('role') == '5') {
     return (
         <>
             <div className='add_btnn'>
@@ -62,7 +66,18 @@ const Property = () => {
                 <Tab menu={{ vertical: true, tabular: true }} panes={panes} />
             </div>
         </>
-    )
+        )
+    }
+    else {
+        return (
+            <Message floating style={{ padding: '60px' }}>
+                <h2>You are not authorised User. Please login again!</h2>
+                <div>
+                    <Button color='primary' onClick={handleGoHome}>Go to Home</Button>
+                </div>
+            </Message>
+        )
+    }
 }
 
 export default Property

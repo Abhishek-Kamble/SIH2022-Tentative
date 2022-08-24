@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card, Grid } from 'semantic-ui-react';
+import { Button, Card, Grid, Message } from 'semantic-ui-react';
 
 
 export default function Dashboard() {
@@ -49,18 +49,32 @@ export default function Dashboard() {
             style: { overflowWrap: 'break-word', padding: '10px' }
         });
     }
-
-
-    return (
-        <div className='staffInfo'>
-            <h1 style={{marginTop:'4%',textDecorationLine:'underline'}}>Property Update Requests</h1>
-            <Grid className='grid_staffInfo'>
-                <Grid.Row>
-                    <Card.Group className='cardItems' items={items} />
-                </Grid.Row>
-            </Grid>
-        </div>
-    )
+    const handleGoHome = () => {
+        console.log("In handle");
+        window.location.href = "http://localhost:3000/";
+    }
+    if (localStorage.getItem('role') == '1') {
+        return (
+            <div className='staffInfo'>
+                <h1 style={{ marginTop: '4%', textDecorationLine: 'underline' }}>Property Update Requests</h1>
+                <Grid className='grid_staffInfo'>
+                    <Grid.Row>
+                        <Card.Group className='cardItems' items={items} />
+                    </Grid.Row>
+                </Grid>
+            </div>
+        )
+    }
+    else {
+        return (
+            <Message floating style={{ padding: '60px' }}>
+                <h2>You are not authorised as Staff. Please login again!</h2>
+                <div>
+                    <Button color='primary' onClick={handleGoHome}>Go to Home</Button>
+                </div>
+            </Message>
+        )
+    }
 
 }
 

@@ -63,7 +63,17 @@ const Login = () => {
           localStorage.setItem("token", data.token);
           localStorage.setItem("role", data.role)
           notify("You login to your account successfully", "success")
-
+          console.log(data.role);
+          if (data.role == '1')
+          {
+            window.location.href = 'http://localhost:3000/adminDashboard';
+          }
+          else if (data.role == '5')
+          {
+            window.location.href = 'http://localhost:3000/userDashboard';
+          }
+          else
+            window.location.href = 'http://localhost:3000/staffDashboard';
         } else {
           notify("Your password or your email is wrong", "error")
         }
