@@ -8,19 +8,22 @@ const registerIncomingRequest= async function(req)
     {
          try{
                 var data={
-                    user_id:req.user_id,
-                    property_id:req.property_id
+                    user_id:req.body.user_id,
+                    property_id:req.body.property_id
                 }
                 const transaction = await sequelize.transaction();
             
                 //check if request is already made
-                if(DatabaseRepository.find(RequestModel,data,NULL,transaction)!=NULL)
+                if(DatabaseRepository.find(RequestModel,(({ where: {user_id:data.user_id} })),transaction)==null)
                 {
-                      DatabaseRepository.insertOne(RequestModel,data,NULL,transaction);
+                      DatabaseRepository.insertOne(RequestModel,data,null,transaction);
                       resolve('Request has been successfully submitted');
                 }
                 else{
+
+                     reject("Property details updation request already submitted")
                      throw error('Property details updation request already submitted');
+                    
                 }
                 
          }

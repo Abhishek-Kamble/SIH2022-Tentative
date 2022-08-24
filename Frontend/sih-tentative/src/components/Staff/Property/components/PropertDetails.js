@@ -124,7 +124,12 @@ const PropertyDetails = ({ nextStep, handleChange, values }) => {
                       onChange={handleChange('zone_id')}
                       fullWidth
                     >
-                      <MenuItem value={1}>Cat 1</MenuItem>
+                      {values.zoneArray.map(response=>{
+                        return (
+                          <MenuItem key={response.zone_id} value={response.zone_id.toString()}>{response.zone_name}</MenuItem>
+                        )
+                      })}
+                      
                     </Select>
                   </FormControl>
                 </Box>

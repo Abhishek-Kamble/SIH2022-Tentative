@@ -3,9 +3,14 @@ const sequelize = require('../serviceHost').sequelize
 const property=require('./property')
 const user=require('./user')
 
-const Requests=sequelize.define(
-    'Request',
+const requests=sequelize.define(
+    'requests',
     {
+        request_id: {
+            type: Sequelize.DataTypes.INTEGER(5),
+            autoIncrement: true,
+            primaryKey: true,
+        },
         user_id:{
             type:Sequelize.DataTypes.STRING(11),
             allowNull : false,
@@ -24,7 +29,7 @@ const Requests=sequelize.define(
         } 
     },
     {
-        table: 'Request'
+        table: 'requests'
     }
 );
-module.exports=Requests;
+module.exports=requests;

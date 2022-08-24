@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../CSS/Navbar.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 import { Link } from "react-router-dom";
 
-const Navbar = (props) => {
-  console.log(props);
+const Navbar = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
-  if (props.role === 'admin') {
+  const [credData,setCredData] = useState({});
+  useEffect(() => {
+    var token = localStorage.getItem('token');
+    var role = localStorage.getItem('role');
+    if(token && role)
+      setCredData({token: token, role: role});
+  }, [])
+
+  console.log(credData.role);
+  
+  if (credData.role === '1') {
     return (
       <>
         <nav className="main-nav">
@@ -27,11 +36,11 @@ const Navbar = (props) => {
               <li>
                 <Link to="/adminDashboard">Home</Link>
               </li>
-              <div class="dropdown-main">
-                <button class="menu-btn">Staff </button>
-                <div class="menu-content">
-                  <Link class="links-hidden" to="/staffRegistration">Registration</Link>
-                  <Link class="links-hidden" to="/staffInfo">Information</Link>
+              <div className="dropdown-main">
+                <button className="menu-btn">Staff </button>
+                <div className="menu-content">
+                  <Link className="links-hidden" to="/staffRegistration">Registration</Link>
+                  <Link className="links-hidden" to="/staffInfo">Information</Link>
                 </div>
               </div>
               <li>
@@ -55,7 +64,7 @@ const Navbar = (props) => {
       </>
     );
   }
-  else if (props.role === 'user') {
+  else if (credData.role === '5') {
     return (
       <>
         <nav className="main-nav">
@@ -99,7 +108,7 @@ const Navbar = (props) => {
       </>
     );
   }
-  else if (props.role === 'staff') {
+  else if (credData.role === '2') {
     return (
       <>
         <nav className="main-nav">
@@ -117,16 +126,13 @@ const Navbar = (props) => {
             }>
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/staffDashboard">Home</Link>
               </li>
               <li>
-                <Link to="/about">about</Link>
+                <Link to="/propertyRegistration">pRegister</Link>
               </li>
               <li>
-                <Link to="/Register">Register</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
+                <Link to="/logout">Logout</Link>
               </li>
             </ul>
           </div>

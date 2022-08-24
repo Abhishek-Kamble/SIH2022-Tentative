@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import FormInput from "./views/FormInput";
+import axiosconfig , {setToken} from "../../config";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notify } from "../toast";
 
 const Registration = () => {
   useEffect(()=>{
@@ -14,6 +18,7 @@ const Registration = () => {
     password: "",
     confirmPassword: "",
   });
+
   const inputs = [
     {
       id: 1,
@@ -69,10 +74,60 @@ const Registration = () => {
       required: true,
     },
   ];
+  const chaeckData = (obj) => {
+    console.log(obj);
+    const { email, password, fname,lname,confirmPassword,mobile_number } = obj;
+    if (   fname.length == 0 ) {
+      notify('Please enter first name', 'error');
+      return;
+    }
+    if (   lname.length == 0) {
+      notify('Please enter last name', 'error');
+      return;
+    }
+    if (   email.length == 0) {
+      notify('Please enter a valid email', 'error');
+      return;
+    }
+    if (mobile_number.length != 10) {
+      console.log("invalid mobile");
+      notify('Please enter a valid mobile number', 'error');
+      return;
+    }
+    if (   password.length == 0) {
+      notify('Please enter a valid password', 'error');
+      return;
+    }
+    if (   confirmPassword !=    password) {
+      notify('Password don\'t match', 'error');
+      return;
+    }
 
+
+    var link = '/staffregistor';
+    setToken(localStorage.getItem('token'));
+    const api = axiosconfig
+      .post(link, obj)
+      .then((response) => response.data)
+      .then(async (data) => {
+        console.log(data)
+        if (data.found) {
+
+          notify("You have registered successfully", "success")
+
+        } else {
+          notify(data.message, "error")
+        }
+      });
+    toast.promise(api, {
+      pending: "Loading your data...",
+      success: false,
+      error: "Something went wrong!",
+    });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
+      chaeckData(values);
   };
 
   const onChange = (e) => {
@@ -98,6 +153,7 @@ const Registration = () => {
           <button onClick={handleSubmit} className="btn_submit">Submit</button>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };
