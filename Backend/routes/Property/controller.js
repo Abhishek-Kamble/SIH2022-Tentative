@@ -38,7 +38,7 @@ router.post('/register/', async (req, res, next) => {
     if (req.decoded.role != '2') {
       res.send({ done: 0, message: 'unauthorized user' })
     } else {
-      req.body.user_id = req.decoded.userid;
+      // req.body.user_id = req.decoded.userid;
       await newRegistration.registration(req).then((data) => {
         res.send(data);
       }).catch((err) => {
