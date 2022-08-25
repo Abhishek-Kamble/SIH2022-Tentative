@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const taxrate = require('../../../models/tax');
 const DatabaseRepository = require('../../../services/DataBaseQuery');
 const sequelize = require('../../../serviceHost').sequelize
+const mysql = require('mysql2');
 
 gettaxrate = async (req) => {
   return await new Promise(async (resolve, reject) => {
@@ -77,8 +78,7 @@ updatetaxrate = async (req) => {
         // fire_tax_per = ${req.body.fire_tax_per}, 
         // discount = ${req.body.discount}
         // WHERE policy_year = ${req.params.policy_year}`
-        var TE = `UPDATE taxesvSET tax_name=${req.body.tax_name},
-        taxrate:${req.body.taxrate}`
+        var TE = 'UPDATE taxes SET tax_name='+ mysql.escape(req.body.tax_name) +' ,taxrate='+req.body.taxrate+' where tax_id=' + req.body.tax_id;
         var GetTERes = await DatabaseRepository.query(TE, { replacement: [], type: Sequelize.QueryTypes.UPDATE });
 
         resolve({ done: 1, data: GetTERes[0] })
