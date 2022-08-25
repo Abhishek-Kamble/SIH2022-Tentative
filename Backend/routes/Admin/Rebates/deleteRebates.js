@@ -1,15 +1,15 @@
 const Sequelize = require('sequelize');
 const DatabaseRepository = require('../../../services/DataBaseQuery')
 
-module.exports.get = async function (data) {
+module.exports.delete = async function (req) {
   return await new Promise(async (resolve, reject) => {
     try {
       if (req.decoded.role != '1') {
         res.send({ message: 'unauthorized user' })
       } else {
-        var TE = `SELECT * FROM rebates`
+        var TE = `DELETE FROM rebates WHERE rebate_id; = ${req.params.rebate_id}`
 
-        var GetTERes = await DatabaseRepository.query(TE, { replacement: [], type: Sequelize.QueryTypes.SELECT });
+        var GetTERes = await DatabaseRepository.query(TE, { replacement: [], type: Sequelize.QueryTypes.DELETE });
 
         resolve({done: 1, data: GetTERes[0]})
       }

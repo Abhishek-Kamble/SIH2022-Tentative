@@ -2,9 +2,17 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../serviceHost').sequelize
 
-const bills = sequelize.define(
-  'bills',
+const billpolicy = sequelize.define(
+  'billpolicy',
   {
+    policy_type:{
+      type: Sequelize.DataTypes.INTEGER(2),
+      allowNull: false
+    },
+    policy_year: {
+      type: Sequelize.DataTypes.DATE,
+      allowNullFalse:false
+    },
     residential_taxes_general_per: {
       type: Sequelize.DataTypes.INTEGER(2),
       allowNull: false,
@@ -40,15 +48,15 @@ const bills = sequelize.define(
     fire_tax_per: {
       type: Sequelize.DataTypes.INTEGER(2),
       allowNull: false
-        },
+    },
     discount: {
       type: Sequelize.DataTypes.INTEGER(2),
       allowNull: false
     }
   },
   {
-    table: 'bills',
+    table: 'billpolicy',
   }
 );
 
-module.exports = bills;
+module.exports = billpolicy;

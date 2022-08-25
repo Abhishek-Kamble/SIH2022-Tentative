@@ -7,6 +7,7 @@ const rebates = sequelize.define(
   {
     rebate_id: {
       type: Sequelize.DataTypes.STRING(11), 
+      primaryKey: true,
       allowNull: false,
     },
     rebate_name: {
@@ -19,6 +20,18 @@ const rebates = sequelize.define(
     },
     discount_per: {
       type: Sequelize.DataTypes.INTEGER(3),
+      allowNull: false,
+    },
+    added_date: {
+      type: Sequelize.DataTypes.DATE,
+      allowNull: false,
+    },
+    start_date: {
+      type: Sequelize.DataTypes.DATE,
+      allowNull: false,
+    },
+    end_date: {
+      type: Sequelize.DataTypes.DATE,
       allowNull: false,
     }
   },
