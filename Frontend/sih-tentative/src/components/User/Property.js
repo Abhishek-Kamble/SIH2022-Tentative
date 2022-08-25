@@ -178,7 +178,7 @@ const Property = () => {
         console.log("In handle");
         window.location.href = "http://localhost:3000/";
     }
-    if (localStorage.getItem('role') == null) {
+    if (localStorage.getItem('role') == '5') {
             return (
                 <>
                     <div className='add_btnn'>
