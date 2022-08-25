@@ -1,7 +1,7 @@
 import React from 'react'
 // import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Grid, TextField, Select, MenuItem, InputLabel, Box, FormControl } from '@material-ui/core'
-import { Message,Button } from 'semantic-ui-react'
+import { Message, Button } from 'semantic-ui-react'
 // import ReactDatePicker from "react-datepicker";
 
 const PropertyDetails = ({ nextStep, handleChange, values }) => {
@@ -129,8 +129,11 @@ const PropertyDetails = ({ nextStep, handleChange, values }) => {
                         onChange={handleChange('zone_id')}
                         fullWidth
                       >
-                        <MenuItem value={23}>Cat 1</MenuItem>
-                      </Select>
+                        {values.zoneArray.map(response => {
+                          return (
+                            <MenuItem key={response.zone_id} value={response.zone_id.toString()}>{response.zone_name}</MenuItem>
+                          )
+                        })}                      </Select>
                     </FormControl>
                   </Box>
                 </Grid>
@@ -207,7 +210,7 @@ const PropertyDetails = ({ nextStep, handleChange, values }) => {
         <h2>You are not authorised as Staff. Please login again!</h2>
         <div>
           <Button color='primary' onClick={handleGoHome}>Go to Home</Button>
-          </div>
+        </div>
       </Message>
     )
   }

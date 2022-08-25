@@ -36,6 +36,22 @@ code {
   padding-bottom: 30px;
 }
 
+.urform{
+  background: white;
+  max-width: 60%!important;
+  margin-top:40px!important;
+  display: inline-block;
+  margin: auto;
+  /* border-radius: $border-radius-size + 5; */
+  position: relative;
+  text-align: center;
+  box-shadow: -1px 15px 30px -12px black;
+  padding-bottom: 30px;
+}
+
+.urform button{
+  font-size: 20px !important;;
+}
 .pcform {
   background: white;
   width: 60%;
