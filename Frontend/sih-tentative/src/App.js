@@ -13,6 +13,9 @@ import PRegistration from "./components/Staff/Property/PRegistration";
 import UProperty from "./components/Staff/Property/UProperty"
 import Logout from "./components/Logout";
 import ViewProperty from "./components/Staff/Dashboard/UpdateRequest"
+import Rebate from "./components/Admin/Rebate";
+import AdminDashboard from './components/Admin/Dashboard'
+import Add_Zone from "./components/Admin/Add_Zone";
 
 function App() {
   return (
@@ -25,8 +28,10 @@ function App() {
             <Route exact path="/login" component={Login} />
 
             {/* Admin Routes */}
-            <Route exact path="/adminDashboard" component={LandingPage} />
+            <Route exact path="/adminDashboard" component={AdminDashboard} />
             <Route exact path="/staffInfo" component={StaffInfo} />
+            <Route exact path="/rebates" component={Rebate} />
+            <Route exact path="/addZone" component={Add_Zone} />
             <Route exact path="/staffRegistration" component={Registration} />
 
             {/* User Routes */}
