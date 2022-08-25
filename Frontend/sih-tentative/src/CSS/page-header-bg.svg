@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="800" viewBox="0 0 1920 800">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.155" y1="0.166" x2="0.822" y2="0.884" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#0e0e0e"/>
+      <stop offset="1" stop-color="#292929"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="1.143" y1="1.022" x2="0.125" y2="0.092" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d4ef1e"/>
+      <stop offset="1" stop-color="#19e6b1"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="1.112" y1="1.135" x2="0.125" y2="0.092" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="silver"/>
+      <stop offset="1" stop-color="#131313"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="2.712" y1="2.747" x2="0.125" y2="0.092" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-5" x1="1.112" y1="1.135" x2="0.125" y2="0.092" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#6a6a6a"/>
+      <stop offset="1" stop-color="#131313"/>
+    </linearGradient>
+  </defs>
+  <g id="page-header-bg" transform="translate(0 -100)">
+    <rect id="Rectangle_601" data-name="Rectangle 601" width="1920" height="800" transform="translate(0 100)" fill="#131313"/>
+    <circle id="Ellipse_156" data-name="Ellipse 156" cx="239" cy="239" r="239" transform="translate(877 147)" fill="url(#linear-gradient)"/>
+    <circle id="Ellipse_157" data-name="Ellipse 157" cx="40.5" cy="40.5" r="40.5" transform="translate(1566 181)" fill="url(#linear-gradient-2)"/>
+    <circle id="Ellipse_158" data-name="Ellipse 158" cx="40.5" cy="40.5" r="40.5" transform="translate(308 181)" opacity="0.5" fill="url(#linear-gradient-3)"/>
+    <circle id="Ellipse_162" data-name="Ellipse 162" cx="20" cy="20" r="20" transform="translate(1502 649)" fill="url(#linear-gradient-4)"/>
+    <circle id="Ellipse_161" data-name="Ellipse 161" cx="27" cy="27" r="27" transform="translate(244 806)" fill="url(#linear-gradient-5)"/>
+  </g>
+</svg>

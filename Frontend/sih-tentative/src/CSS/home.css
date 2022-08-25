@@ -1,0 +1,195 @@
+.LandingPage .bg__Head {
+  background: url('./page-header-bg.svg') top center no-repeat;
+  /* margin: 82px 0 10rem; */
+  background-size: cover;
+  background-color: #002333;
+  padding: 30vh 0 2vh 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+}
+
+.container2 {
+  max-width: 1140px;
+}
+
+.container2 {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+  position: relative;
+}
+
+#latest_news .container1 {
+  width: 100%;
+  background: #484848;
+  float: left;
+  display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 45px;
+  position: relative;
+  cursor: pointer;
+}
+
+#latest_news .marquee,
+*[class^="marquee"] {
+  display: inline-block;
+  white-space: nowrap;
+  position: absolute;
+}
+
+#latest_news .marquee-sibling {
+  padding: 0;
+  background: rgb(61, 61, 61);
+  width: 20%;
+  height: 45px;
+  line-height: 42px;
+  font-size: 12px;
+  font-weight: normal;
+  color: #ffffff;
+  text-align: center;
+  float: left;
+  left: 0;
+  z-index: 2000;
+}
+
+#latest_news .marquee {
+  margin-left: 25%;
+}
+
+#latest_news .marquee-content-items {
+  display: inline-block;
+  padding: 5px;
+  margin: 0;
+  height: 45px;
+  position: relative;
+}
+
+#latest_news .marquee-content-items li {
+  display: inline-block;
+  line-height: 35px;
+  color: #fff;
+}
+
+#latest_news .marquee-content-items li:after {
+  content: "|";
+  margin: 0 1em;
+}
+
+.titleBox2 {
+  font-size: 40px;
+}
+
+.bg__Head .entry-title {
+  color: #fff;
+  font-size: 6.4rem;
+  font-size: 4.5vw;
+  line-height: 1.3;
+  background: -webkit-linear-gradient(-330deg, #25E7A7, #9CEC49);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.services {
+  margin-bottom: 35px;
+}
+
+.services h4 {
+  font-family: Helvetica, sans-serif;
+  color: #2E2E2E;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  padding: 0px;
+  float: left;
+  margin: 0em 0em 1.5em 0em;
+  font-weight: 600;
+}
+
+
+@media (max-width: 1200px) {
+  .LandingPage .bg__Head {
+    margin: 0px 0 0;
+    padding: 40px 0;
+  }
+
+  .bg__Head .entry-title {
+    font-size: 11vw;
+    line-height: 1.3;
+  }
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+
+
+.container3 {
+  width: 100%;
+  height: 100%;
+  padding: 0px 8%;
+  padding-top:10px;
+  padding-bottom:5%;
+}
+
+.container3 h1 {
+  text-align: center;
+  padding-top: 10%;
+  margin-bottom: 60px;
+  font-weight: 600;
+  position: relative;
+}
+
+.container3 h1::after {
+  content: '';
+  background: #303ef7;
+  width: 100px;
+  height: 5px;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.row1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 30px;
+}
+
+.service {
+  text-align: center;
+  padding: 25px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  background: transparent;
+  transition: transform 0.5s, background 0.5s;
+}
+
+.service img {
+  width: 30.2%;
+}
+
+.service i {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #303ef7;
+}
+
+.service h2 {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.service:hover {
+  background: #303ef7;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.service:hover i {
+  color: #fff;
+}
