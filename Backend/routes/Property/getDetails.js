@@ -8,7 +8,7 @@ require('dotenv').config();
 module.exports.details = async function (req) {
   return await new Promise(async (resolve, reject) => {
     try {
-      var uid = req.decoded.id;
+      var uid = req.decoded.userid;
       TE = 'SELECT * FROM properties WHERE user_id=' + mysql.escape(uid);
       var PropertyData = await DatabaseRepository.query(TE, { replacement: [], type: Sequelize.QueryTypes.SELECT });
     //   console.log(PropertyData)
