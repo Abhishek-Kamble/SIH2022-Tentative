@@ -9,7 +9,7 @@ getBillPolicy = async (req) => {
       if (req.decoded.role != '1') {
         res.send({ message: 'unauthorized user' })
       } else {
-        var TE = `SELECT * FROM billpolicy WHERE policy_id = ${req.body.policy_id}`
+        var TE = `SELECT * FROM billpolicy WHERE policy_year = ${req.params.policy_year} AND policy_type = ${req.params.policy_type}`
 
         var GetTERes = await DatabaseRepository.query(TE, { replacement: [], type: Sequelize.QueryTypes.SELECT });
 
@@ -98,12 +98,10 @@ getBillPolicies = async function (data) {
     } catch (error) {
       reject({ done: 0, message: error.message })
     }
-  }
-  )
+  })
 }
 
 module.exports.updateBillPolicy = updateBillPolicy;
-module.exports.deleteBillPolicy = deleteBillPolicy;
 module.exports.getBillPolicies = getBillPolicies;
 module.exports.addBillPolicy = addBillPolicy;
 module.exports.getBillPolicy = getBillPolicies;
