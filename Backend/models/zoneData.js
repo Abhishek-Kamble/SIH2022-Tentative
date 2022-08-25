@@ -41,3 +41,14 @@ const zones = sequelize.define(
 );
 
 module.exports = zones;
+
+/*
+{
+  "zone_name":"Kolhapur",
+  "zone_id":"Tarabai_Park",
+  "resendential_per":"1",
+  "commercial_per":"0",
+  "industrial_per":"0",
+  "uav":"123"
+}
+*/

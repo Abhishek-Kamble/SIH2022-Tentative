@@ -42,6 +42,8 @@ function App() {
             <Route exact path="/up" component={UProperty} />
             <Route exact path="/logout" component={Logout} />
 
+            <Route exact path="/bill" component={Bill} />
+
           </Switch>
         </div>
       </container>
