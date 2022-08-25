@@ -64,7 +64,7 @@ var ValidateDatabase = async function (req) {
             }
 
 
-            resolve();
+            resolve("ok");
 
         } catch (err) {
             console.log(err);

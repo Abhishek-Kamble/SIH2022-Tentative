@@ -6,16 +6,16 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
-  const [credData,setCredData] = useState({});
+  const [credData, setCredData] = useState({});
   useEffect(() => {
     var token = localStorage.getItem('token');
     var role = localStorage.getItem('role');
-    if(token && role)
-      setCredData({token: token, role: role});
+    if (token && role)
+      setCredData({ token: token, role: role });
   }, [])
 
   console.log(credData.role);
-  
+
   if (credData.role === '1') {
     return (
       <>
@@ -131,9 +131,15 @@ const Navbar = () => {
               <li>
                 <Link to="/staffDashboard">Home</Link>
               </li>
-              <li>
-                <Link to="/propertyRegistration">pRegister</Link>
-              </li>
+              <div className="dropdown-main">
+                <button className="menu-btn">Property</button>
+                <div className="menu-content">
+                  <Link className="links-hidden" to="/propertyRegistration">Register</Link>
+                  <Link className="links-hidden" to="/propertyUpdate">Update</Link>
+                  <Link className="links-hidden" to="/propertyTransfer">Transfer</Link>
+
+                </div>
+              </div>
               <li>
                 <Link to="/logout">Logout</Link>
               </li>

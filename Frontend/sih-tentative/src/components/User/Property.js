@@ -69,6 +69,7 @@ const Property = () => {
             script.async = true
             script.id = 'razorpay-script'
             document.head.appendChild(script)
+            setLoading(true);
             return () => {
                 const script = document.getElementById('razorpay-script')
                 const rContainer = document.querySelector('.razorpay-container')
@@ -76,7 +77,6 @@ const Property = () => {
                 rContainer && rContainer.remove()
                 script && script.remove()
             };
-            setLoading(true);
         }).catch((err) => {
             console.log(err);
         });

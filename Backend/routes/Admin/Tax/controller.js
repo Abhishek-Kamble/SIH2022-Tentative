@@ -1,11 +1,13 @@
 const Express = require('../../../serviceHost').Express;
 const router = Express.Router();
-const BillPolicy = require('./business');
+const taxrate = require('./business');
 
 router.post('/', function(req, res) {
   try {
-    BillPolicy.addBillPolicy(req).then(data => {
+    taxrate.addtaxrate(req).then(data => {
       res.send(data);
+    }).catch((err) => {
+      res.send(err);
     })
   } catch (error) {
     res.send(error);
@@ -14,8 +16,10 @@ router.post('/', function(req, res) {
 
 router.patch('/', function(req, res) {
   try {
-    BillPolicy.updateBillPolicy(req).then(data => {
+    taxrate.updatetaxrate(req).then(data => {
       res.send(data);
+    }).catch((err) => {
+      res.send(err);
     })
   } catch (error) {
     res.send(error);
@@ -24,18 +28,23 @@ router.patch('/', function(req, res) {
 
 router.get('/', function(req, res) {
   try {
-    BillPolicy.getBillPolicies(req).then(data => {
+    taxrate.getBillPolicies(req).then(data => {
       res.send(data);
+    }).catch((err) => {
+      res.send(err);
     })
-  } catch (error) {
-    res.send(error);
+  } catch (err) {
+    console.log(error);
+    res.send({done:0, message:err});
   }
 })
 
 router.get('/:policy_year/:policy_type', function(req, res) {
   try {
-    BillPolicy.getBillPolicy(req).then(data => {
+    taxrate.gettaxrate(req).then(data => {
       res.send(data);
+    }).catch((err) => {
+      res.send({done:0, message:err});
     })
   } catch (error) {
     res.send(error);

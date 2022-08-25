@@ -29,19 +29,19 @@ register = async function(req) {
             req.body.Registration_date = new Date().toJSON().slice(0, 19).replace('T', ' ');
             var userD = req.body;
             
-            // const userData = DatabaseRepository.insertOne(users,userD,null,transaction);
+            const userData = DatabaseRepository.insertOne(users,userD,null,transaction);
             
             // send email function
 
             req.email = req.body.email;
             req.name = req.body.name;
             req.activationLink = process.env.api + '/verification?id=5&uid=' + req.body.user_id;
-            UserEmail.UserRegistrationEmail(req)
+            await UserEmail.UserRegistrationEmail(req)
 
             //resolve email
             // console.log(userData)
             
-            resolve(userD);
+            resolve(userData);
 
         } catch (e) {
             console.log(e)
