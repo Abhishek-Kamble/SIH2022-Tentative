@@ -24,6 +24,7 @@ const Password = require('./routes/password/controller');
 const zones = require('./routes/User/zones/controller');
 const rebates = require('./routes/Admin/Rebates/controller');
 const billPolicy = require('./routes/Admin/BillPoilicy/controller');
+const Taxrate = require('./routes/Admin/Tax/controller');
 // Routes
 expressApp.use('/login',Login);
 
@@ -38,7 +39,7 @@ expressApp.use('/zoneRegister',AuthorizationRoute.validateToken,zoneRegister);
 expressApp.use('/user',requestRegister);
 expressApp.use('/rebates', rebates);
 expressApp.use('/bill-policy', billPolicy);
-
+expressApp.use('/taxrate',AuthorizationRoute.validateToken,Taxrate);
 expressApp.use('/p',Password);
 expressApp.use('/zones',zones);
 
