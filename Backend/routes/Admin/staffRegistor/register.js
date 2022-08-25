@@ -35,14 +35,14 @@ register = async function(req) {
             };
             // console.log("---------",employeeD.mobile_number);
             
-            const EmployeeData = DatabaseRepository.insertOne(employees,employeeD,null,transaction);
+            const EmployeeData = await DatabaseRepository.insertOne(employees,employeeD,null,transaction);
             
             // send email function
 
             req.email = req.body.email;
             req.name = req.body.fname + ' ' + req.body.lname;
             req.activationLink = process.env.api + '/verification?id=2&uid=' + req.body.employee_id;
-            staffRegistrationEmail(req)
+            await staffRegistrationEmail(req)
 
             //resolve email
             

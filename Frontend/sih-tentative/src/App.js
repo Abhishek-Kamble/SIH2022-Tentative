@@ -12,17 +12,16 @@ import Bill from "./components/User/Bill/Bill";
 import PRegistration from "./components/Staff/Property/PRegistration";
 import UProperty from "./components/Staff/Property/UProperty"
 import Logout from "./components/Logout";
-import PRegistration from "./components/Staff/Property/Registration";
 import ViewProperty from "./components/Staff/Dashboard/UpdateRequest"
 
 function App() {
   return (
     <>
-      <Navbar role='admin'></Navbar>
+      <Navbar ></Navbar>
       <container>
         <div className="content">
           <Switch>
-            <Route exact path="/" component={Registration} />
+            <Route exact path="/" component={LandingPage} />
             <Route exact path="/login" component={Login} />
 
             {/* Admin Routes */}
@@ -42,6 +41,8 @@ function App() {
             <Route exact path="/pregister" component={PRegistration} />
             <Route exact path="/up" component={UProperty} />
             <Route exact path="/logout" component={Logout} />
+
+            <Route exact path="/bill" component={Bill} />
 
           </Switch>
         </div>

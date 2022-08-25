@@ -29,12 +29,13 @@ router.post('/', async (req, res, next) => {
 
         await ValidateDatabase(req).then(async(data) => {
             await register.register(req).then((data) => {
-                res.send(data);
+                res.send({found:1,data:data});
             }).catch((err) => {
-                res.send(err);
+                res.send({found:0,message:err});
             })
         }).catch((err) => {
-            res.send(err);
+            console.log(err);
+            res.send({found:0,message:err});
         })
     } catch (err) {
         res.status(400).send(err);

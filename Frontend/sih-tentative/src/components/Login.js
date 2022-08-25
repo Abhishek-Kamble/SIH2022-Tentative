@@ -3,11 +3,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
 import { Link } from "react-router-dom";
-import axiosconfig from "../config";
+import axiosconfig,{setToken} from "../config";
 import emailIcon from "../images/email.png";
 import passIcon from "../images/password.png";
 import Dropdown from 'react-dropdown';
-import cookie from "react-cookie";
 import 'react-dropdown/style.css';
 
 var emailRegex = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
@@ -62,9 +61,20 @@ const Login = () => {
       .then(async (data) => {
         if (data.found == 1 && data.token) {
           localStorage.setItem("token", data.token);
-          localStorage.setItem("id", id)
+          localStorage.setItem("role", data.role)
+          setToken(localStorage.getItem('token'));
           notify("You login to your account successfully", "success")
-
+          console.log(data.role);
+          if (data.role == '1')
+          {
+            window.location.href = 'http://localhost:3000/adminDashboard';
+          }
+          else if (data.role == '5')
+          {
+            window.location.href = 'http://localhost:3000/userDashboard';
+          }
+          else
+            window.location.href = 'http://localhost:3000/staffDashboard';
         } else {
           notify("Your password or your email is wrong", "error")
         }
