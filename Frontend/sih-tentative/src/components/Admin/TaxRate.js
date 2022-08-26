@@ -82,12 +82,19 @@ export default function TaxRate() {
         window.location.href = "http://localhost:3000/";
     }
 
+    const generateBills = () => {
+        
+    }
+
     if (localStorage.getItem('role') == '1' && loading) {
         return (
             <>
                 {/* <Button style={{ backgroundColor: 'blue'}}><Link style={{ color: 'white' }} to="/addtax"> Add Tax</Link></Button> */}
                 <h1 style={{ padding: '30px' }}>Property Tax rates</h1>
-                <Table className='table_rebate' celled padded>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Button style={{ backgroundColor: 'blue', color: 'white' }} onClick={generateBills}>Generate Bills</Button>
+                </div>
+                    <Table className='table_rebate' celled padded>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell textAlign='center'>
