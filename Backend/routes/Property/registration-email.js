@@ -1,5 +1,5 @@
 const emailService = require('../../services/email')
-module.exports.propertyRegistrationEmail = async function (data) {
+module.exports.propertyRegistrationEmail = async function (req) {
   return await new Promise(async (resolve, reject) => {
     try {
 
@@ -113,7 +113,7 @@ module.exports.propertyRegistrationEmail = async function (data) {
           },
           "Subject": {
             "Charset": "UTF-8",
-            "Data": `Staff account activation`
+            "Data": `Successful Property Registration`
           }
         }
       }

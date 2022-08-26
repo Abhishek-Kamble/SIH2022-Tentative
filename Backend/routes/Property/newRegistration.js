@@ -1,4 +1,5 @@
 const DatabaseRepository = require('../../services/DataBaseQuery')
+const Sequelize = require('sequelize')
 const sequelize = require('../../serviceHost').sequelize
 const propertyID = require('./propertyId').propertyid
 const s3Handler = require('../../services/s3handler')
