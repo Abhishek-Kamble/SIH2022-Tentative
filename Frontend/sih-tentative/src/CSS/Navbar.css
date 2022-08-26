@@ -28,7 +28,7 @@ li {
   width: 100%;
   display: grid;
   grid-template-columns: 10rem 1fr 2fr 1fr 10rem;
-  background-color: #2218A7;
+  background-color: #131313;
 }
 
 .logo {

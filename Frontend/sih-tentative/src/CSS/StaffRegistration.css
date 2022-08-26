@@ -13,6 +13,16 @@
     background-position: center;
 }
 
+.appp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Georgia, serif;
+  background-size: cover;
+  background-position: center;
+}
+
 
 .btnn{
 margin-top: 20px;

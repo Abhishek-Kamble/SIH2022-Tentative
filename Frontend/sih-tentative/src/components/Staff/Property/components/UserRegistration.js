@@ -28,7 +28,7 @@ const UserRegistration = ({ nextStep, handleChange, values, setUserID }) => {
         e.preventDefault();
         console.log(data)
         if (URS == 3) {
-            axiosconfig.post('/UserRegister').then((response) => {
+            axiosconfig.post('/UserRegister',data).then((response) => {
                 console.log(response)
                 if (response.data.done) {
                     values.user_id = response.data.message.user_id
@@ -217,7 +217,7 @@ const UserRegistration = ({ nextStep, handleChange, values, setUserID }) => {
                                                 onChange={handleChangeUser('password')}
                                                 defaultValue={values.password}
                                                 // variant="outlined"
-                                                autoComplete="address"
+                                                autoComplete="password"
                                                 fullWidth
                                                 type="password"
                                             />
