@@ -26,14 +26,14 @@ module.exports.registration = async function (req) {
       //   docFormat: req.body.applicationFormat
       // });
 
-      const droneData = landData[0];
-      console.log(droneData);
+      // const droneData = landData[0];
+      // console.log(droneData);
       Data = {
         "property_id": property_id,
         "land_number": req.body.land_number,
-        "areacovered": droneData.area * droneData.floors,  // calculated by drone
-        "area": droneData.area,
-        "floors": droneData.floors,
+        "areacovered": req.body.area * req.body.floors,  // calculated by drone
+        "area": req.body.area,
+        "floors": req.body.floors,
         "yearconstruction": new Date().toJSON().slice(0, 19).replace('T', ' '),//TODO: after frontend completed change it
         "zone_id": req.body.zone_id,
         "user_id": req.body.user_id.toString(),
