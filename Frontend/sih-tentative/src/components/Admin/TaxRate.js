@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "../toast";
+import { Link } from 'react-router-dom';
 export default function TaxRate() {
     const [modalShow, setModalShow] = useState(false);
     const [itemId, setItemId] = useState({
@@ -84,6 +85,7 @@ export default function TaxRate() {
     if (localStorage.getItem('role') == '1' && loading) {
         return (
             <>
+                {/* <Button style={{ backgroundColor: 'blue'}}><Link style={{ color: 'white' }} to="/addtax"> Add Tax</Link></Button> */}
                 <h1 style={{ padding: '30px' }}>Property Tax rates</h1>
                 <Table className='table_rebate' celled padded>
                     <Table.Header>

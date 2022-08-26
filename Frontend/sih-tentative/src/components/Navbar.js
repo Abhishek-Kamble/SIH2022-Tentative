@@ -44,7 +44,10 @@ const Navbar = () => {
                 </div>
               </div>
               <li>
-                <Link to="/rebates">Rebate</Link>
+                <Link to="/taxrate">TaxRate</Link>
+              </li>
+              <li>
+                <Link to="/addZone">AddZone</Link>
               </li>
               <li>
                 <Link to="/logout">Logout</Link>
