@@ -138,7 +138,7 @@ const Navbar = () => {
                 <button className="menu-btn">Property</button>
                 <div className="menu-content">
                   <Link className="links-hidden" to="/propertyRegistration">Register</Link>
-                  <Link className="links-hidden" to="/propertyUpdate">Update</Link>
+                  <Link className="links-hidden" to="/up">Update</Link>
                   <Link className="links-hidden" to="/propertyTransfer">Transfer</Link>
 
                 </div>
@@ -183,12 +183,6 @@ const Navbar = () => {
             <ul>
               <li>
                 <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">about</Link>
-              </li>
-              <li>
-                <Link to="/Register">Register</Link>
               </li>
               <li>
                 <Link to="/login">Login</Link>

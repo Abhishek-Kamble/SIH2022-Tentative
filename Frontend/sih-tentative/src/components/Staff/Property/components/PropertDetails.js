@@ -43,10 +43,10 @@ const PropertyDetails = ({ nextStep, handleChange, values }) => {
 
                 <Grid item xs={12}>
                   <TextField
-                    placeholder="Construction  Area (Sq. Ft./ Sq. Meters)"
-                    label="Construction  Area (Sq. Ft./ Sq. Meters)"
-                    onChange={handleChange('areacovered')}
-                    defaultValue={values.areacovered}
+                    placeholder="Enter Land Number"
+                    label="Enter Land Number"
+                    onChange={handleChange('land_number')}
+                    defaultValue={values.land_number}
                     // variant="outlined"
                     autoComplete="area"
                     fullWidth

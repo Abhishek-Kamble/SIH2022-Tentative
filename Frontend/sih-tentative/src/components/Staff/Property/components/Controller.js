@@ -12,7 +12,7 @@ export default class Controller extends Component {
   state = {
     step: 0,
     property_address: '',
-    areacovered: '',
+    land_number: '',
     yearconstruction: new Date().toJSON().slice(0, 10),
     zone_id: '',
     user_id: '',
@@ -81,8 +81,8 @@ export default class Controller extends Component {
         </Segment>
       )
     }
-    const { property_address, areacovered, yearconstruction, zone_id, user_id, use, constructortype, occupancytype, type, aff_id_bd_name, app_id_bd_name, aff_id_bd, app_id_bd, zoneArray } = this.state;
-    const values = { property_address, areacovered, yearconstruction, zone_id, user_id, use, constructortype, occupancytype, type, aff_id_bd_name, app_id_bd_name, aff_id_bd, app_id_bd, zoneArray }
+    const { property_address, land_number, yearconstruction, zone_id, user_id, use, constructortype, occupancytype, type, aff_id_bd_name, app_id_bd_name, aff_id_bd, app_id_bd, zoneArray } = this.state;
+    const values = { property_address, land_number, yearconstruction, zone_id, user_id, use, constructortype, occupancytype, type, aff_id_bd_name, app_id_bd_name, aff_id_bd, app_id_bd, zoneArray }
     switch (step) {
       case 0:
         return (
