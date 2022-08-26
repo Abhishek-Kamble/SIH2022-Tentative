@@ -16,6 +16,8 @@ import ViewProperty from "./components/Staff/Dashboard/UpdateRequest"
 import Rebate from "./components/Admin/Rebate";
 import AdminDashboard from './components/Admin/Dashboard'
 import Add_Zone from "./components/Admin/Add_Zone";
+import TaxRate from "./components/Admin/TaxRate";
+import AddTax from "./components/Admin/AddTax";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
             <Route exact path="/staffInfo" component={StaffInfo} />
             <Route exact path="/rebates" component={Rebate} />
             <Route exact path="/addZone" component={Add_Zone} />
+            <Route exact path="/taxRate" component={TaxRate} />
+            <Route exact path="/addtax" component={AddTax} />
             <Route exact path="/staffRegistration" component={Registration} />
 
             {/* User Routes */}
