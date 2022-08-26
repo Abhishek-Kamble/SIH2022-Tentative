@@ -25,7 +25,8 @@ const Bill = () => {
         displayRazorpay();
     }
 
-    const displayRazorpay = async () => {
+    const displayRazorpay = async (e) => {
+        e.event.preventDefault();
         console.log(process.env.REACT_APP_API_KEY_RAZORPAY);
         const options = {
             key: process.env.REACT_APP_API_KEY_RAZORPAY,

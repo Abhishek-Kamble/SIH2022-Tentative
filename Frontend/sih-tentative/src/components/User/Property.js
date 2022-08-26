@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Tab, Card, Button, Message } from 'semantic-ui-react'
+import {Link} from "react-router-dom"
+import { Tab, Card, Button, Message, Filter } from 'semantic-ui-react'
 import axiosconfig, { setToken } from "../../config";
 import { ToastContainer, toast } from "react-toastify";
 import { notify } from "../toast";
@@ -15,53 +16,54 @@ const Property = () => {
         axiosconfig.get('/Property/details').then((response) => {
             // console.log()
             setPropertyData(response.data.data)
+            var propertydata = response.data.data
             const panes = [];
             for (var i = 0; i < propertydata.length; i++) {
-                var pd = propertydata[i];
-                console.log(pd)
+                const pd = propertydata[i];
                 var obj = {
                     menuItem: propertydata[i].property_id,
-                    render: () =>
-                        <Tab.Pane>
-                            <div style={{ padding: '30px' }}>
-                                <div >
-                                    <h1>Property Id -{pd.property_id}</h1>
-                                    <h3 style={{ textAlign: 'center' }}>{pd.property_address}</h3>
-                                    <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                        <Button style={{ backgroundColor: '#2218A7', color: 'white' }} onClick={updateProperty}>Update Prperty Details</Button>
+                    render: () => {
+                        return (
+                            <Tab.Pane key={i}>
+                                {/* <Filter key={pd.property_id} name={pd.property_id} /> */}
+                                <div style={{ padding: '30px' }}>
+                                    <div >
+                                        <h1>Property Id -{pd.property_id}</h1>
+                                        <h3 style={{ textAlign: 'center' }}>{pd.property_address}</h3>
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <Button style={{ backgroundColor: '#2218A7', color: 'white' }} onClick={() => updateProperty(pd)}>Update Prperty Details</Button>
+                                        </div>
                                     </div>
+                                    <br></br><br></br><hr></hr>
+                                    <h1>Pending............</h1>
+                                    <Card.Group>
+                                        <Card fluid color='blue' >
+                                            <div style={{ padding: '20px' }}>
+                                                <h3 style={{ display: 'inline-block' }}>1235df54hd</h3>
+                                                <Button style={{ width: '8%', display: 'inline-block', backgroundColor: '#2218A7', color: 'white' }} floated='right'> <Link to={`bill/${pd.property_id}`}>Bill</Link> </Button>
+                                                <Button onClick={ApiForRazorpay} style={{ width: '8%', display: 'inline-block', backgroundColor: '#2218A7', color: 'white' }} floated='right'>Pay</Button>
+                                            </div>
+                                        </Card>
+                                    </Card.Group>
+                                    <br></br><br></br><hr></hr>
+                                    <h1>Paid</h1>
+                                    <Card.Group>
+                                        <Card fluid color='blue' >
+                                            <div style={{ padding: '20px' }}>
+                                                <h3 style={{ display: 'inline-block' }}>1235df54hd</h3>
+                                                <Button style={{ width: '8%', display: 'inline-block', backgroundColor: '#2218A7', color: 'white' }} floated='right'>Bill</Button>
+                                            </div>
+                                        </Card>
+                                    </Card.Group>
                                 </div>
-                                {/* <br></br><br></br><hr></hr>
-                            <h1>Pending............</h1>
-                            <Card.Group>
-                                <Card fluid color='blue' >
-                                    <div style={{ padding: '20px' }}>
-                                        <h3 style={{ display: 'inline-block' }}>1235df54hd</h3>
-                                        <Button style={{ width: '8%', display: 'inline-block', backgroundColor: '#2218A7', color: 'white' }} floated='right'>Bill</Button>
-                                        <Button style={{ width: '8%', display: 'inline-block', backgroundColor: '#2218A7', color: 'white' }} floated='right'>Pay</Button>
-                                    </div>
-                                </Card>
-                                <Card fluid color='blue' header='Option 2' />
-                                <Card fluid color='blue' header='Option 3' />
-                            </Card.Group>
-                            <br></br><br></br><hr></hr>
-                            <h1>Paid</h1>
-                            <Card.Group>
-                                <Card fluid color='blue' >
-                                    <div style={{ padding: '20px' }}>
-                                        <h3 style={{ display: 'inline-block' }}>1235df54hd</h3>
-                                        <Button style={{ width: '8%', display: 'inline-block', backgroundColor: '#2218A7', color: 'white' }} floated='right'>Bill</Button>
-                                    </div>
-                                </Card>
-                                <Card fluid color='blue' header='Option 2' />
-                                <Card fluid color='blue' header='Option 3' />
-                            </Card.Group> */}
-                            </div>
-                        </Tab.Pane >
+                            </Tab.Pane >
+                        )
+                    }
                 }
 
                 panes.push(obj);
             }
+            // console.log(panes)
             setPropertyItems(panes);
             require("../../CSS/Property.css")
             const script = document.createElement('script')
@@ -82,8 +84,8 @@ const Property = () => {
         });
     }, [loading])
 
-    const updateProperty = () => {
-
+    const updateProperty = (data) => {
+        console.log('updateProperty', data);
     }
 
 
@@ -178,29 +180,29 @@ const Property = () => {
         console.log("In handle");
         window.location.href = "http://localhost:3000/";
     }
-    if (localStorage.getItem('role') == '5') {
-            return (
-                <>
-                    <div className='add_btnn'>
+    if (localStorage.getItem('role') == '5' && loading) {
+        return (
+            <>
+                {/* <div className='add_btnn'>
                         <button className='btn_plus'>Add New Property</button>
-                    </div>
-                    <div className='tab-bar'>
-                        <Tab menu={{ vertical: true, tabular: true }} panes={panes} />
-                    </div>
-                    <ToastContainer />
-                </>
-            )
-        }
-        else {
-            return (
-                <Message floating style={{ padding: '60px' }}>
-                    <h2>You are not authorised User. Please login again!</h2>
-                    <div>
-                        <Button color='primary' onClick={handleGoHome}>Go to Home</Button>
-                    </div>
-                </Message>
-            )
-        }
+                    </div> */}
+                <div className='tab-bar'>
+                    <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={PropertyItems} />
+                </div>
+                <ToastContainer />
+            </>
+        )
     }
+    else {
+        return (
+            <Message floating style={{ padding: '60px' }}>
+                <h2>You are not authorised User. Please login again!</h2>
+                <div>
+                    <Button color='primary' onClick={handleGoHome}>Go to Home</Button>
+                </div>
+            </Message>
+        )
+    }
+}
 
-    export default Property;
+export default Property;
