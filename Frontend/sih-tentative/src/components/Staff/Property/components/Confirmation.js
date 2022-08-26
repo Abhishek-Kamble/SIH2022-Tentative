@@ -7,8 +7,8 @@ import { ToastContainer, toast } from "react-toastify";
 
 
 function validate(value) {
-  const { property_address, areacovered, yearconstruction, zone_id, user_id, use, constructortype, occupancytype, type, aff_id_bd_name, aff_id_bd, app_id_bd_name, app_id_bd } = value
-  if (property_address && areacovered && yearconstruction && zone_id && use && constructortype && occupancytype && type && aff_id_bd_name && aff_id_bd && app_id_bd_name && app_id_bd) {
+  const { property_address, land_number, yearconstruction, zone_id, user_id, use, constructortype, occupancytype, type, aff_id_bd_name, aff_id_bd, app_id_bd_name, app_id_bd } = value
+  if (property_address && land_number && yearconstruction && zone_id && use && constructortype && occupancytype && type && aff_id_bd_name && aff_id_bd && app_id_bd_name && app_id_bd) {
     return true;
 
   }
@@ -42,7 +42,7 @@ const PType = [
 ]
 
 const Confirmation = ({ prevStep, nextStep, values }) => {
-  const { property_address, areacovered, yearconstruction, zone_id, user_id, use, constructortype, occupancytype, type, aff_id_bd_name, aff_id_bd, app_id_bd_name, app_id_bd } = values
+  const { property_address, land_number, yearconstruction, zone_id, user_id, use, constructortype, occupancytype, type, aff_id_bd_name, aff_id_bd, app_id_bd_name, app_id_bd } = values
   const Continue = async (e) => {
     e.preventDefault();
     if (validate(values)) {
@@ -80,7 +80,7 @@ const Confirmation = ({ prevStep, nextStep, values }) => {
               <ListItemText primary="Property Address" secondary={property_address} />
             </ListItem>
             <ListItem>
-              <ListItemText primary="Construction  Area" secondary={areacovered} />
+              <ListItemText primary="Land Number" secondary={land_number} />
             </ListItem>
             <ListItem>
               <ListItemText primary="Year of construction" secondary={yearconstruction} />
