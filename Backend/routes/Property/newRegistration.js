@@ -4,6 +4,7 @@ const propertyID = require('./propertyId').propertyid
 const s3Handler = require('../../services/s3handler')
 const property = require('../../models/property')
 const landData = require('./land-data')
+const registrationMail = require('./registration-email')
 
 require('dotenv').config();
 
@@ -45,7 +46,18 @@ module.exports.registration = async function (req) {
 
       const PropertyData = await DatabaseRepository.insertOne(property,Data,null,transaction);
       
-      console.log(PropertyData);
+      // console.log(PropertyData);
+
+      var TE = `SELECT * FROM users WHERE user_id = ${req.body.user_id}`;
+
+      GetTERes = await DatabaseRepository.query(TE,{
+        replacement :[], type : Sequelize.QueryTypes.SELECT });
+
+      req.email = GetTERes[0].email;
+      req.name = GetTERes[0].name;
+      req.property_id = property_id;
+
+      await registrationMail.propertyRegistrationEmail(req);
 
       resolve({ done: 1, mesage: "Data inserted into DB!" });
     } catch (error) {
