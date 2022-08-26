@@ -59,6 +59,7 @@ const Login = () => {
       .post(link, obj)
       .then((response) => response.data)
       .then(async (data) => {
+        console.log(data)
         if (data.found == 1 && data.token) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("role", data.role)
@@ -76,7 +77,7 @@ const Login = () => {
           else
             window.location.href = 'http://localhost:3000/staffDashboard';
         } else {
-          notify("Your password or your email is wrong", "error")
+          notify(data.message, "error")
         }
       });
     toast.promise(api, {

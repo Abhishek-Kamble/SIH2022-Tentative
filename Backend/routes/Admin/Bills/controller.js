@@ -1,5 +1,5 @@
 const Express = require('../../../serviceHost').Express;
-const router = Express.router();
+const router = Express.Router();
 const Generate = require('./generate');
 
 router.post('/', function(req, res) {
