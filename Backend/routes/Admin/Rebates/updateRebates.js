@@ -22,6 +22,5 @@ module.exports.update = async function (req) {
     } catch (error) {
       reject({ done: 0, message: error.message })
     }
-  }
-  )
+  })
 }

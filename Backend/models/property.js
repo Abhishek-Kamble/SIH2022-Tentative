@@ -17,11 +17,9 @@ const properties = sequelize.define(
         },
         affidavit_id: {
             type: Sequelize.DataTypes.STRING(80),
-            allowNull: false,
         },
         application_id: {
             type: Sequelize.DataTypes.STRING(80),
-            allowNull: false,
         },
         zone_id: {
             type: Sequelize.DataTypes.STRING(11), // zone id from the zoneData
@@ -79,7 +77,28 @@ const properties = sequelize.define(
             type: Sequelize.DataTypes.DATE,
             allowNull: false,
         },
-
+        /*longitude: {
+            type: Sequelize.DataTypes.INTEGER(2),
+            allowNull: false,
+            defaultValue: 0
+        },
+        lattitude: {
+            type: Sequelize.DataTypes.INTEGER(2),
+            allowNull: true,
+            defaultValue: 0
+        },*/
+        area: {
+            type: Sequelize.DataTypes.INTEGER(5),
+            allowNull: false,
+        },
+        floors: {
+            type: Sequelize.DataTypes.INTEGER(2),
+            allowNull: false,
+        },
+        land_number: {
+            type: Sequelize.DataTypes.INTEGER(5),
+            allowNull: false,
+        },
     },
     {
         table: 'properties',

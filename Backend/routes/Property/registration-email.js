@@ -1,5 +1,5 @@
-const emailService = require('./email')
-module.exports.UserRegistrationEmail = async function (req) {
+const emailService = require('../../services/email')
+module.exports.propertyRegistrationEmail = async function (data) {
   return await new Promise(async (resolve, reject) => {
     try {
 
@@ -19,7 +19,7 @@ module.exports.UserRegistrationEmail = async function (req) {
                 
                 <head>
                   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-                  <title>User Registration Email</title>
+                  <title>Property Registration Email</title>
                   <meta name="description" content="set Your Password.">
                   <style type="text/css">
                       a:hover {text-decoration: underline !important;}
@@ -57,17 +57,15 @@ module.exports.UserRegistrationEmail = async function (req) {
                                   </tr>
                                               <tr>
                                                   <td style="padding:0 35px;">
-                                                      <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">Activate your account.</h1>
+                                                      <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">Your property has been registered!</h1>
                                                       <span
                                                           style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                                       <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">
-                                                        Dear <strong>${req.name}</strong>, please click the link below to reset your account password.                                                                                                             
-                                                      </p>
-                                                      <a href="${req.activationLink}"
-                                                          style="background:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">Activate Account and Set Password</a>
-                                                    
-                                                    <p style="color:#455056; font-size:15px;line-height:24px; margin:10;">                                          Please note that provided one-time password set link is valid only for 30 Min.
-                                                    Please do not reply to this message, for any queries reach us at abhishek.kamble@walchandsangli.ac.in
+                                                        Dear <strong>${req.name}</strong>, congratulations your property has been successfully registered with Municipal Tax and Finance Management System.                   
+                                                      </p>             
+                                                    <p> <strong>Property ID: </strong> ${req.property_id} </p>
+                                                    <p style="color:#455056; font-size:15px;line-height:24px; margin:10;">                
+                                                   This is a system generated email. Please do not reply to this e-mail, for any queries reach us at abhishek.kamble@walchandsangli.ac.in
                                                       <br>
                                                       <br>
                                                       Thanks & Regards,
@@ -115,7 +113,7 @@ module.exports.UserRegistrationEmail = async function (req) {
           },
           "Subject": {
             "Charset": "UTF-8",
-            "Data": `${req.name}, please verify your registration`
+            "Data": `Staff account activation`
           }
         }
       }
